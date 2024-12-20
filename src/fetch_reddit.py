@@ -210,8 +210,9 @@ def generate_html(all_posts_info):
                 padding-bottom: 10px;
             }
         </style>
-        <!-- Include dash.js library -->
+        <!-- Include dash.js and hls.js libraries -->
         <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     </head>
     <body>
         <h1>Daily Top Reddit Posts</h1>
@@ -238,9 +239,32 @@ def generate_html(all_posts_info):
                 </div>
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                        var url = "{{ post.media_url }}";
-                        var player = dashjs.MediaPlayer().create();
-                        player.initialize(document.querySelector("#video{{ loop.parent.loop.index0 }}-{{ loop.index0 }}"), url, true);
+                        var dashUrl = "{{ post.dash_url }}";
+                        var hlsUrl = "{{ post.hls_url }}";
+                        var fallbackUrl = "{{ post.media_url }}";
+                        var videoElement = document.querySelector("#video{{ loop.parent.loop.index0 }}-{{ loop.index0 }}");
+
+                        if (dashUrl) {
+                            // Use dash.js if DASH manifest is available
+                            var player = dashjs.MediaPlayer().create();
+                            player.initialize(videoElement, dashUrl, true);
+                        } else if (hlsUrl) {
+                            // Use hls.js if HLS url is available
+                            if (Hls.isSupported()) {
+                                var hls = new Hls();
+                                hls.loadSource(hlsUrl);
+                                hls.attachMedia(videoElement);
+                            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                                // Some browsers (Safari) may support HLS natively
+                                videoElement.src = hlsUrl;
+                            } else {
+                                // fallback no audio scenario
+                                videoElement.src = fallbackUrl;
+                            }
+                        } else {
+                            // fallback no audio scenario
+                            videoElement.src = fallbackUrl;
+                        }
                     });
                 </script>
                 {% endif %}
@@ -306,6 +330,8 @@ def main():
             # Handle media content
             media_type = None
             media_url = None
+            dash_url = None
+            hls_url = None
             
             # Handle images
             if data.get('post_hint') == 'image':
@@ -314,16 +340,15 @@ def main():
             # Handle videos
             elif data.get('is_video'):
                 media_type = 'video'
-                if 'reddit_video' in data.get('media', {}):
-                    dash_url = data['media']['reddit_video'].get('dash_url')
-                    if dash_url:
-                        media_url = dash_url  # Use DASH manifest URL for dash.js
-                    else:
-                        # Fallback to fallback_url if dash_url is not available
-                        media_url = data['media']['reddit_video'].get('fallback_url')
-                else:
-                    # Handle cases where 'media' might not contain 'reddit_video'
-                    media_url = data.get('secure_media', {}).get('reddit_video', {}).get('fallback_url')
+                reddit_video = data.get('media', {}).get('reddit_video', {})
+                dash_url = reddit_video.get('dash_url')
+                hls_url = reddit_video.get('hls_url')
+                # fallback_url is usually video only, no audio
+                fallback_url = reddit_video.get('fallback_url')
+
+                # If no DASH or HLS, fallback to fallback_url
+                # This won't have audio, but at least shows the video.
+                media_url = dash_url or hls_url or fallback_url
 
             comments = get_top_comments(token, subreddit, post_id)
             posts_info.append({
@@ -334,6 +359,8 @@ def main():
                 'comments': comments,
                 'media_type': media_type,
                 'media_url': media_url,
+                'dash_url': dash_url,
+                'hls_url': hls_url,
                 'ups': ups,
                 'num_comments': num_comments
             })
