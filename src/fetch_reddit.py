@@ -35,7 +35,7 @@ def get_top_comments(token, post_id, limit=3):
     res = requests.get(url, headers=headers)
     # The first object in response is the post, second is comments
     comment_data = res.json()
-    if len(comment_data) > 1:
+    if isinstance(comment_data, list) and len(comment_data) > 1 and 'data' in comment_data[1] and 'children' in comment_data[1]['data']:
         comments = comment_data[1]['data']['children']
         top_comments = []
         for c in comments:
@@ -56,7 +56,8 @@ def get_top_comments(token, post_id, limit=3):
             if len(top_comments) == limit:
                 break
         return top_comments
-    return []
+    else:
+        return []
 
 def generate_html(posts_info):
     template_str = """
