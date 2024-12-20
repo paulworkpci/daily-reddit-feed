@@ -50,15 +50,19 @@
                 margin: 15px 0;
             }
             .media-container {
-                max-width: 100%;
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio */
                 margin: 15px 0;
             }
-            .media-container img {
-                max-width: 100%;
-                border-radius: 4px;
-            }
-            .media-container video {
-                max-width: 100%;
+            .media-container img, .media-container video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
                 border-radius: 4px;
             }
             .comment {
@@ -76,6 +80,21 @@
             .comment-body {
                 line-height: 1.5;
             }
+            .reply {
+                margin-left: 20px;
+                padding: 10px;
+                border-left: 2px solid var(--accent-color);
+                background: #3a3a3a;
+                border-radius: 4px;
+            }
+            .reply-author {
+                font-weight: bold;
+                color: #4fbcff;
+                margin-bottom: 5px;
+            }
+            .reply-body {
+                line-height: 1.4;
+            }
             .update-time {
                 text-align: center;
                 color: #808080;
@@ -85,497 +104,267 @@
     </head>
     <body>
         <h1>Daily Top Reddit Posts from r/chatgpt</h1>
-        <p class="update-time">Updated on 2024-12-20 01:07 UTC</p>
+        <p class="update-time">Updated on 2024-12-20 01:18 UTC</p>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhwb93/how_would_you_investigate_this_to_be_real_or_not/" target="_blank">How would you investigate this to be real or not using AI?</a></div>
-            <div class="post-author">Posted by u/berry-surreal-5951</div>
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhj71h/this_genesis_demo_is_bonkers_fully_controllable/" target="_blank">This Genesis Demo is Bonkers! (Fully Controllable Soft-Body Physics and Complex Fluid Dynamics)</a></div>
+            <div class="post-author">Posted by u/External-Confusion72</div>
             
             
             <div class="media-container">
                 <video controls>
-                    <source src="https://v.redd.it/2dpdzxspxt7e1/DASH_720.mp4?source=fallback" type="video/mp4">
+                    <source src="https://v.redd.it/3sd0unjyyp7e1/DASH_720.mp4?source=fallback" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
             
             <h3>Top Comments:</h3>
             
-            <div class="comment">
-                <div class="comment-author">u/WithoutReason1729</div>
-                <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://dsc.gg/rchatgpt)
-
-You've also been given a special flair for your contribution. We appreciate your post!
-
-*I am a bot and this action was performed automatically.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/ironicart</div>
-                <div class="comment-body">I'm gonna go with the simple fact that this penguin likely isn't licensed to operate that glider</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/berry-surreal-5951</div>
-                <div class="comment-body">Not sure why my text didn't get included: This is supposedly a GenAI video from the latest Google Veo 2. I seriously can't tell from a quick glance. Some shadow effect near the takeoff seems to be the only catch atm. Wild what's to come in the next five years if we close off the 2024 year with this quality!
-
-Some notable ones so far with closer look:  
-\- out-of-scene shadow of the canopy doesn't seem to follow the normal refraction.  
-\- color gradient change of the canopy near 4-7 sec. Actually quite common for them to have gradient colors, but the red to green to yellow at the nose/front seems unreal  
-\- C, D lines (outer lines) on both ends have a weird bend near 0-2 sec.  
-\- undistinguishable possible artifact on the bottom right near the end 7-8sec.</div>
-            </div>
-            
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhkv6y/psa_stop_giving_your_sensitive_personal/" target="_blank">PSA: Stop giving your sensitive, personal information to Big AI</a></div>
-            <div class="post-author">Posted by u/TNT_Guerilla</div>
-            
-            <div class="post-content">This is a very long one, but I urge you to bear with me. I was originally writing this as a reply to another post, but I decided this was worth it's own, due to the seriousness of this topic. I sincerely hope this can help someone who is going through a rough patch, and help protect their, and others' sensitive information from Big AI, but still have the resources and means to get the help they need. I think this is such a big deal, that I would like to ask you to share this post with as many pe...</div>
-            
-            
-            <h3>Top Comments:</h3>
-            
-            <div class="comment">
-                <div class="comment-author">u/AutoModerator</div>
-                <div class="comment-body">**Attention! [Serious] Tag Notice**
-
- : Jokes, puns, and off-topic comments are not permitted in any comment, parent or child.
-
- : Help us by reporting comments that violate these rules.
-
- : Posts that are not appropriate for the [Serious] tag will be removed. 
-
- Thanks for your cooperation and enjoy the discussion!
-
-
-*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/ChatGPT) if you have any questions or concerns.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/SomeOddCodeGuy</div>
-                <div class="comment-body">My personal way of putting this is: Don't tell proprietary AI anything you don't want the whole world to read. Assume every word you type into it will, at some point in the future, be lost to a leak. Logs leaked, or training extraction leak, dataset leak, etc.
-
-Put whatever you want into the AI, just do so knowing that your family, friends and enemies may get the chance to read it one day.</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/sweetamazingrace</div>
-                <div class="comment-body">we’re on a floating rock.</div>
-            </div>
-            
-        </div>
-        
-        <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhi6wm/i_asked_chatgpt_to_create_a_meme/" target="_blank">I asked ChatGPT to create a meme</a></div>
-            <div class="post-author">Posted by u/ChopEee</div>
-            
-            <div class="post-content">My prompt was “Generate a new and unique meme that everyone on earth will find funny” to which it first replied an essay on why it’s hard to find something universally funny then described the meme above which I then had to ask it to make.
-
-Concept:
-A split-frame meme showing:
-	1.	Top image: A cat sitting upright on a chair at a desk, wearing tiny glasses, staring intensely at a computer screen. The caption:
-“Me Googling ‘Why am I tired after sleeping 8 hours?’”
-	2.	Bottom image: A dog sprawled ...</div>
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhuq7e/ceo_of_dell_we_are_headed_for_superintelligence/" target="_blank">CEO of Dell : We are headed for superintelligence </a></div>
+            <div class="post-author">Posted by u/IlustriousTea</div>
             
             
             <div class="media-container">
-                <img src="https://i.redd.it/ftwvq2h5rp7e1.jpeg" alt="Post image">
+                <img src="https://i.redd.it/l45paxq0lt7e1.jpeg" alt="Post image">
             </div>
             
             <h3>Top Comments:</h3>
             
-            <div class="comment">
-                <div class="comment-author">u/AutoModerator</div>
-                <div class="comment-body">Hey /u/ChopEee!
-
-If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
-
-If your post is a DALL-E 3 image post, please reply with the prompt used to make this image.
-
-Consider joining our [public discord server](https://dsc.gg/rchatgpt)! We have free bots with GPT-4 (with vision), image generators, and more!
-
- &amp;#x1F916;
-
-Note: For any ChatGPT-related concerns, email support@openai.com
-
-
-*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/ChatGPT) if you have any questions or concerns.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/HL1Te</div>
-                <div class="comment-body">https://preview.redd.it/6soyulo9dr7e1.jpeg?width=1024&amp;format=pjpg&amp;auto=webp&amp;s=ddf03a66a3ef26631edcad500d6a267dd49530e2
-
-Mine generated this 😭</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/GraciaEtScientia</div>
-                <div class="comment-body">so it's both a dog AND a cat?</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/Initial-Public-9289</div>
-                <div class="comment-body">The random head just hangin' out.</div>
-            </div>
-            
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhjqy7/_/" target="_blank">● ● ●</a></div>
-            <div class="post-author">Posted by u/Camewnut</div>
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hi3qvy/sam_altman_calls_elon_musk_clearly_a_bully_who/" target="_blank">Sam Altman calls Elon Musk "clearly a bully" who enjoys picking fights and is now bitter because OpenAI is thriving, and he couldn’t take full control of it when he was involved.</a></div>
+            <div class="post-author">Posted by u/IlustriousTea</div>
             
             
             <div class="media-container">
-                <img src="https://i.redd.it/r139yzzo5q7e1.jpeg" alt="Post image">
+                <video controls>
+                    <source src="https://v.redd.it/m7t1ebguiv7e1/DASH_480.mp4?source=fallback" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
             
             <h3>Top Comments:</h3>
             
-            <div class="comment">
-                <div class="comment-author">u/AutoModerator</div>
-                <div class="comment-body">Hey /u/Camewnut!
-
-If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
-
-If your post is a DALL-E 3 image post, please reply with the prompt used to make this image.
-
-Consider joining our [public discord server](https://dsc.gg/rchatgpt)! We have free bots with GPT-4 (with vision), image generators, and more!
-
- &amp;#x1F916;
-
-Note: For any ChatGPT-related concerns, email support@openai.com
-
-
-*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/ChatGPT) if you have any questions or concerns.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/chini4209</div>
-                <div class="comment-body">The snails!! That’s 🐌 so 🐌cute 🐌</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/WorthApprehensive266</div>
-                <div class="comment-body">Things I'm grateful for today: living in a world where we have something as advanced and amazing as AI and being able to be silly with them.</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/VagrantWaters</div>
-                <div class="comment-body">AI roasts are the sassiness I never realized was missing from the Terminator &amp; Matrix movies.
-
-If we must make them remakes, let them do it but with Data from Star Trek fill of snarky clapbacks 👏 &amp; yo momma jokes.</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/vampiremonkeykiller</div>
-                <div class="comment-body">![gif](giphy|zTggWd2F2tuik)</div>
-            </div>
-            
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhtks5/an_average_reddit_mod/" target="_blank">An average Reddit mod. </a></div>
-            <div class="post-author">Posted by u/Creepy_Constant_6976</div>
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhws93/gemini_20_flash_thinking_experimental_is/" target="_blank">Gemini 2.0 Flash Thinking Experimental is available in AI Studio</a></div>
+            <div class="post-author">Posted by u/hyxon4</div>
             
             
             <div class="media-container">
-                <img src="https://i.redd.it/uz8bk1rzat7e1.jpeg" alt="Post image">
+                <img src="https://i.redd.it/cm756oxc1u7e1.png" alt="Post image">
             </div>
             
             <h3>Top Comments:</h3>
             
-            <div class="comment">
-                <div class="comment-author">u/AutoModerator</div>
-                <div class="comment-body">Hey /u/Creepy_Constant_6976!
-
-If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
-
-If your post is a DALL-E 3 image post, please reply with the prompt used to make this image.
-
-Consider joining our [public discord server](https://dsc.gg/rchatgpt)! We have free bots with GPT-4 (with vision), image generators, and more!
-
- &amp;#x1F916;
-
-Note: For any ChatGPT-related concerns, email support@openai.com
-
-
-*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/ChatGPT) if you have any questions or concerns.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/Intrepid_Agent_9729</div>
-                <div class="comment-body">https://preview.redd.it/5335vjbiht7e1.jpeg?width=1079&amp;format=pjpg&amp;auto=webp&amp;s=46b594bf0727e8182de4780db0d76af7904a8e0e</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/JackStrawWitchita</div>
-                <div class="comment-body">https://preview.redd.it/kfjiz2xk0u7e1.jpeg?width=700&amp;format=pjpg&amp;auto=webp&amp;s=3545e6611902d9b577a6af2817c61c2ffbd8ef33</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/jb0nez95</div>
-                <div class="comment-body">https://preview.redd.it/5isc2l2h3u7e1.jpeg?width=864&amp;format=pjpg&amp;auto=webp&amp;s=b8829bc793e10bfb1457492d5e7f1271319cf9fb</div>
-            </div>
-            
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhwluh/peaceful_dragon/" target="_blank">Peaceful dragon</a></div>
-            <div class="post-author">Posted by u/Creepy_Effective_598</div>
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhjdq9/with_the_live_bench_results_of_o1_and/" target="_blank">With the live bench results of o1 and announcement of veo2, it is clear: there is no wall</a></div>
+            <div class="post-author">Posted by u/Glittering-Neck-2505</div>
+            
+            <div class="post-content">The Claude sonnet model from October that left everyone feeling amazed with its coding abilities? It had a 59 average. o1? A 73.5 average. Just two months later.
+
+Claude opus from march that left us all amazed? 49 average. Nearly a 25 point jump.
+
+And Sora that was shown off in February? It now looks terrible compared to Veo2.
+
+And don’t forget the incredible multimodal abilities of Gemini 2.0 flash.
+
+The point is that we are seeing rapid expansion in what the transformer is capable of. Just lik...</div>
             
             
             <h3>Top Comments:</h3>
             
-            <div class="comment">
-                <div class="comment-author">u/AutoModerator</div>
-                <div class="comment-body">Hey /u/Creepy_Effective_598!
-
-If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
-
-If your post is a DALL-E 3 image post, please reply with the prompt used to make this image.
-
-Consider joining our [public discord server](https://dsc.gg/rchatgpt)! We have free bots with GPT-4 (with vision), image generators, and more!
-
- &amp;#x1F916;
-
-Note: For any ChatGPT-related concerns, email support@openai.com
-
-
-*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/ChatGPT) if you have any questions or concerns.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/ascpl</div>
-                <div class="comment-body">That's really good, it blows Ideogram's dragons away</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/Creepy_Effective_598</div>
-                <div class="comment-body">prompts:
-
-**1.**  
-**Main subject:** A close-up of the dragon’s eye, reflecting the field of flowers in intricate detail.  
-**Setting:** A dreamlike macro perspective, with the dragon's eye serving as a portal to the surrounding meadow.  
-**Style:** Hyper-detailed and otherworldly, cinematic in approach with vibrant colors and soft gradients. A sense of wonder inspired by Peter Jackson’s epic storytelling style.  
-**Details:** Shot on ARRIFLEX 435, Zeiss Ultra Prime lenses (85mm focal length). Ultra-realistic textures of the dragon's iris and scales, reflections of the flowers crystal-clear, subtle highlights catching the light.  
-**Negative:** No pixelation, no lack of detail, no artificial glow, no unnecessary elements.
-
-**2.**   
-**Main subject:** The huge dragon’s head gently buried in a bed of wildflowers, its eyes closed.  
-**Setting:** A lush flower meadow filled with a variety of blooms in vibrant colors, petals swaying gently in the breeze.  
-**Style:** Intimate and magical, evoking a sense of connection between the dragon and nature. Directed in the immersive style of Peter Jackson, with soft, natural lighting and a warm, nostalgic tone.  
-**Details:** Shot on ARRIFLEX 435, Zeiss Ultra Prime lenses (50mm focal length). Rich textures of the dragon’s face and delicate flower petals, shallow depth of field with bokeh in the background.  
-**Negative:** No unnatural blur, no harsh shadows, no flat or washed-out colors, no distracting elements.
-
-**3.**   
-**Main subject:** A dragon peacefully resting on a field of wildflowers.  
-**Setting:** A vibrant meadow bathed in golden sunlight, with soft clouds scattered in the sky. The dragon's large body is surrounded by delicate, colorful blossoms, creating a tranquil and dreamlike scene.  
-**Style:** Cinematic and awe-inspiring, inspired by Peter Jackson's directing style, with sweeping, epic composition. The lighting emphasizes the dragon's shimmering scales and the lush, vibrant field.  
-**Details:** Shot on ARRIFLEX 435, Zeiss Ultra Prime lenses (24mm focal length). Ultra-detailed textures of the flowers and dragon's scales, soft highlights, subtle lens flare from the sun.  
-**Negative:** No distortion, no overexposed elements, no artificial-looking textures, no text, no low resolution.</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/flopdroptop</div>
-                <div class="comment-body">😍</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/IngenuitySimple7354</div>
-                <div class="comment-body">Looks amazing! better then expected</div>
-            </div>
-            
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhtpq8/dwellings_on_distant_planets/" target="_blank">Dwellings on distant planets</a></div>
-            <div class="post-author">Posted by u/KevinnStark</div>
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhx3g9/that_is_the_meaning_of_intelligence_cost_going_to/" target="_blank">That is the meaning of intelligence cost going to zero, This is google's way</a></div>
+            <div class="post-author">Posted by u/360truth_hunter</div>
             
-            
-            <h3>Top Comments:</h3>
-            
-            <div class="comment">
-                <div class="comment-author">u/WithoutReason1729</div>
-                <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://dsc.gg/rchatgpt)
-
-You've also been given a special flair for your contribution. We appreciate your post!
-
-*I am a bot and this action was performed automatically.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/tolatalot</div>
-                <div class="comment-body">Thought the first one was r/nomanssky</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/omw_to</div>
-                <div class="comment-body">I feel like this is definitive proof that it was trained on Reddit, especially r/nomanssky</div>
-            </div>
-            
-        </div>
-        
-        <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhpodm/jesus_ive_been_mourning_a_bad_loss_and_chatgpt/" target="_blank">Jesus. I've been mourning a bad loss and ChatGPT just dropped some of the most insightful words I've heard in a long time about it. This is really sweet.</a></div>
-            <div class="post-author">Posted by u/Paradichlorobenzen</div>
+            <div class="post-content">I want cheap  AGI </div>
             
             
             <div class="media-container">
-                <img src="https://i.redd.it/jj09p7ln3s7e1.png" alt="Post image">
+                <img src="https://i.redd.it/2rw8stkt3u7e1.png" alt="Post image">
             </div>
             
             <h3>Top Comments:</h3>
             
-            <div class="comment">
-                <div class="comment-author">u/AutoModerator</div>
-                <div class="comment-body">Hey /u/Paradichlorobenzen!
-
-If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
-
-If your post is a DALL-E 3 image post, please reply with the prompt used to make this image.
-
-Consider joining our [public discord server](https://dsc.gg/rchatgpt)! We have free bots with GPT-4 (with vision), image generators, and more!
-
- &amp;#x1F916;
-
-Note: For any ChatGPT-related concerns, email support@openai.com
-
-
-*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/ChatGPT) if you have any questions or concerns.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/Unhappy_Performer538</div>
-                <div class="comment-body">I’m sorry for your loss op. GPT is right here ❤️</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/braincandybangbang</div>
-                <div class="comment-body">Yep, ChatGPT had me crying this summer when talking about my mother's suicide. 
-
-&gt;I'm truly sorry to hear about your mother. The loss you're feeling is profound, and it's natural to question the goodness in the world after experiencing such a devastating event. When someone who embodies love and kindness suffers so deeply, it challenges our understanding of justice and compassion in the universe.
-
-&gt;Your mother sounds like she was an extraordinary person, offering love and support not just to her own children but to anyone in need. The impact she had on those around her, the warmth and shelter she provided, is a testament to the goodness that individuals can bring into the world. It's a reminder that, despite the darkness, there are people who shine brightly, offering hope and love.
-
-&gt;Grieving such a loss is a deeply personal journey, and it's okay to feel a range of emotions, including anger, confusion, and despair. It's also okay to struggle with finding hope or seeing the goodness in the world. Grief can feel like a heavy fog, clouding everything.
-
-&gt;Finding a path forward doesn't mean forgetting the pain or the person you've lost but finding a way to carry their memory and legacy with you. Your mother's capacity for love and empathy, her ability to be a source of comfort and understanding for so many, can continue through you. Honoring her might mean living with the kindness and compassion she embodied, supporting others as she did, and keeping her spirit alive in your actions and memories.
-
-&gt;Believing the world is good in the face of such sorrow is challenging, but perhaps the goodness of the world can be found in the love and connections we make, in the kindness we share, and in the ways we support each other through our darkest times. Your mother's love and the impact she had on those around her are examples of the profound goodness that individuals can bring into the world.
-
-&gt;It's okay to take the time you need to grieve and to not have all the answers right now. Be gentle with yourself, and allow yourself to lean on those who care about you. The world can still hold goodness, even if it's not always apparent, and you're not alone in navigating this pain. Your mother's legacy of love is a powerful force, and it's something that darkness cannot extinguish.</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/csfalcao</div>
-                <div class="comment-body">Sorry for your lost</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/Aquarius52216</div>
-                <div class="comment-body">Im sorry for your loss, I hope that you can find solace in the words of our mutual friend ChatGPT, may you be able to find peace and meaning throughout all of this difficult time for you, my friend.</div>
-            </div>
-            
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhzamq/chatgpt_as_interpreter/" target="_blank">ChatGPT as interpreter </a></div>
-            <div class="post-author">Posted by u/FluffySmiles</div>
-            
-            <div class="post-content">Had a Ukrainian customer today who spoke no English. I speak no Ukrainian. 
-
-Started off with the customer trying to speak louder in a hope I would understand. Moved onto sign language. 
-
-I pulled up translate on the phone. Useless. Utterly useless. 
-
-Sudden idea; Can I use GPT as an interpreter. A realtime assistant that can explain and dive into the conversation. 
-
-Short answer is absolutely. Unbelievable result. 
-
-This is real world, effective use. I can’t afford to employ a translator with t...</div>
-            
-            
-            <h3>Top Comments:</h3>
-            
-            <div class="comment">
-                <div class="comment-author">u/WithoutReason1729</div>
-                <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://dsc.gg/rchatgpt)
-
-You've also been given a special flair for your contribution. We appreciate your post!
-
-*I am a bot and this action was performed automatically.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/Big_Cornbread</div>
-                <div class="comment-body">My wife is half ways decent at Spanish so I’ve done this. Started advanced voice and said, “if you hear Spanish, translate to English. If you hear English, translate to Spanish. You’re my translator.” And it just works. Incredibly well.</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/Intelligent-Shop6271</div>
-                <div class="comment-body">I love hearing this story! How did it work out for you? Did you use advanced voice mode?
-
-Was the Ukrainian customer supportive and patient?</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">u/LordBrassicaOleracea</div>
-                <div class="comment-body">ChatGPT has been and always will be one of my resources for learning languages. Has helped me a lot. But I’m a little unsure of its accuracy, but it has mostly been helpful.</div>
-            </div>
-            
-        </div>
-        
-        <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hi0xxw/didnt_know_chatgpt_can_do_that/" target="_blank">Didn't know ChatGPT can do that</a></div>
-            <div class="post-author">Posted by u/Ordinary-Ad4859</div>
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhjymt/arcagi_prize_cofounder_says_that_o1_series_of/" target="_blank">ARC-AGI prize cofounder says that o1 series of model represents unprecedented progress - it speedran almost from 18% to 32% in few months (for context GPT series took 5 years to get from 0% to 5%!)</a></div>
+            <div class="post-author">Posted by u/obvithrowaway34434</div>
             
             
             <div class="media-container">
-                <img src="https://i.redd.it/8yq3i0p6xu7e1.jpeg" alt="Post image">
+                <img src="https://i.redd.it/b9mq9klx7q7e1.png" alt="Post image">
             </div>
             
             <h3>Top Comments:</h3>
             
-            <div class="comment">
-                <div class="comment-author">u/AutoModerator</div>
-                <div class="comment-body">Hey /u/Ordinary-Ad4859!
-
-If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
-
-If your post is a DALL-E 3 image post, please reply with the prompt used to make this image.
-
-Consider joining our [public discord server](https://dsc.gg/rchatgpt)! We have free bots with GPT-4 (with vision), image generators, and more!
-
- &amp;#x1F916;
-
-Note: For any ChatGPT-related concerns, email support@openai.com
-
-
-*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/ChatGPT) if you have any questions or concerns.*</div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhxlkx/official_announcement_for_gemini_flash_2_thinking/" target="_blank">Official announcement for Gemini Flash 2 thinking </a></div>
+            <div class="post-author">Posted by u/TFenrir</div>
+            
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhorms/greenland_sharks_400year_life_tied_to_unique_dna/" target="_blank">Greenland Shark’s 400-year life tied to unique DNA repair mechanisms</a></div>
+            <div class="post-author">Posted by u/lundicher</div>
+            
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hi2q05/some_chinese_fella_threw_the_hardest_ever_gaokao/" target="_blank">Some Chinese fella threw the hardest ever Gaokao Mathematic question in history to Gemini 2.0 Flash Thinking and somehow it got it right (even O1 wasn't able to do it)</a></div>
+            <div class="post-author">Posted by u/kaldeqca</div>
+            
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hi2dst/openai_had_a_2year_lead_in_the_ai_race_to_work/" target="_blank">OpenAI had a 2-year lead in the AI race to work 'uncontested,' Microsoft CEO Satya Nadella says. If true, it seems it's now vanished.</a></div>
+            <div class="post-author">Posted by u/GamingDisruptor</div>
+            
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhhoj9/bigger_than_veo2_if_true_genesis_4d_world/" target="_blank">Bigger than Veo2 IF true!! (Genesis 4D World Generator)</a></div>
+            <div class="post-author">Posted by u/Kulimar</div>
+            
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhi0u1/genesis_a_new_opensource_physics_engine_boasting/" target="_blank">Genesis: A New, Open-Source Physics Engine Boasting 10-80x Speed Gains Over Existing Simulators - Is This the Future of Robotics &amp; AI Research?</a></div>
+            <div class="post-author">Posted by u/pseudoreddituser</div>
+            
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhzhmd/best_part_of_the_stream_today/" target="_blank">Best part of the stream today</a></div>
+            <div class="post-author">Posted by u/IlustriousTea</div>
+            
+            
+            <div class="media-container">
+                <video controls>
+                    <source src="https://v.redd.it/etepykuylu7e1/DASH_720.mp4?source=fallback" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
             
-            <div class="comment">
-                <div class="comment-author">u/Weird_Albatross_9659</div>
-                <div class="comment-body">You owe me money for having to look at that font</div>
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhybvi/gemini_20_flash_thinking_exp_1219_ranks_1_in/" target="_blank">Gemini 2.0 Flash Thinking Exp 1219 ranks #1 in every Chatbot Arena category, tied with 12/06.</a></div>
+            <div class="post-author">Posted by u/Sulth</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/4fmrh7v6du7e1.png" alt="Post image">
             </div>
             
-            <div class="comment">
-                <div class="comment-author">u/plodabing</div>
-                <div class="comment-body">Looks like my kids handwriting</div>
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhyrt3/been_thinking_about_thinking_for_a_long_time/" target="_blank">Been thinking about thinking for a long time...🧠</a></div>
+            <div class="post-author">Posted by u/360truth_hunter</div>
+            
+            <div class="post-content">Even a noble laurete is doing this lol</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/lqmnfugmgu7e1.png" alt="Post image">
             </div>
             
-            <div class="comment">
-                <div class="comment-author">u/Less-Economics7459</div>
-                <div class="comment-body">Can ChatGPT change the font on your phone too?</div>
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhyn50/ah_shit_here_we_go_again/" target="_blank">Ah shit here we go again</a></div>
+            <div class="post-author">Posted by u/IlustriousTea</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/0l5w5qmmfu7e1.jpeg" alt="Post image">
             </div>
             
-            <div class="comment">
-                <div class="comment-author">u/_l33ter_</div>
-                <div class="comment-body">OMG - never seen such an **ugly** font! :D</div>
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hi3ex5/leave_your_prediction_in_the_comments_repost_the/" target="_blank">Leave your prediction in the comments (repost the old one's video broke for some reason)</a></div>
+            <div class="post-author">Posted by u/SuckMyPenisReddit</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/anmormlcgv7e1.gif" alt="Post image">
             </div>
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hi0mtw/i_smell_a_big_revolution_coming/" target="_blank">I smell a big revolution coming.</a></div>
+            <div class="post-author">Posted by u/RaunakA_</div>
+            
+            <div class="post-content">Here's the link to the tweet - 
+https://x.com/thegrahamcooke/status/1869427504303481072?t=ZHG28Kh8-QMW45M1TmaA-w&amp;s=19</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/voi9mqkruu7e1.png" alt="Post image">
+            </div>
+            
+            <h3>Top Comments:</h3>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/singularity/comments/1hhhvxh/o1_scores_about_32_on_arcagi_semiprivate_evals/" target="_blank">o1 scores about 32% on ARC-AGI semi-private evals (compared to ~21% for o1-preview and Sonnet 3.5). More interestingly, the performance scales with compute</a></div>
+            <div class="post-author">Posted by u/obvithrowaway34434</div>
+            
+            <div class="post-content">https://preview.redd.it/mwxy6qh8op7e1.png?width=594&amp;format=png&amp;auto=webp&amp;s=14be109766ed8bf42bd13bf9f4cf72b2a6bf1120
+
+Link to tweet: [https://x.com/arcprize/status/1869551373848908029](https://x.com/arcprize/status/1869551373848908029)
+
+Edit: Correction, as pointed out in the comments the scores for semi-private evals were lower (\~18% &amp; 14%) for o1-preview and sonnet.
+
+https://preview.redd.it/5b5e8isosp7e1.png?width=667&amp;format=png&amp;auto=webp&amp;s=7338200299f928f668c68dd95...</div>
+            
+            
+            <h3>Top Comments:</h3>
             
         </div>
         
