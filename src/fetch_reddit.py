@@ -50,7 +50,6 @@ def get_top_comments(token, post_id, limit=5):
     return []
 
 def generate_html(posts_info):
-    # Simple HTML template
     template_str = """
     <!DOCTYPE html>
     <html>
@@ -58,25 +57,110 @@ def generate_html(posts_info):
         <meta charset="UTF-8">
         <title>Daily Reddit Feed (r/chatgpt)</title>
         <style>
-            body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
-            h1 { text-align: center; }
-            .post { margin-bottom: 40px; }
-            .post-title { font-size: 1.2em; font-weight: bold; }
-            .comment { margin-left: 20px; padding: 10px; border-left: 3px solid #ccc; margin-bottom: 10px; }
-            .comment-author { font-weight: bold; }
+            :root {
+                --primary-color: #1a1a1b;
+                --secondary-color: #ffffff;
+                --accent-color: #ff4500;
+                --border-color: #343536;
+            }
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                padding: 20px;
+                max-width: 1000px;
+                margin: auto;
+                background: var(--primary-color);
+                color: var(--secondary-color);
+            }
+            h1 {
+                text-align: center;
+                color: var(--accent-color);
+            }
+            .post {
+                margin-bottom: 40px;
+                padding: 20px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: #222222;
+            }
+            .post-title {
+                font-size: 1.4em;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+            .post-title a {
+                color: var(--secondary-color);
+                text-decoration: none;
+            }
+            .post-title a:hover {
+                color: var(--accent-color);
+            }
+            .post-author {
+                color: #4fbcff;
+                margin-bottom: 15px;
+            }
+            .post-content {
+                margin: 15px 0;
+            }
+            .media-container {
+                max-width: 100%;
+                margin: 15px 0;
+            }
+            .media-container img {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+            .media-container video {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+            .comment {
+                margin: 15px 0;
+                padding: 15px;
+                border-left: 3px solid var(--accent-color);
+                background: #2d2d2d;
+                border-radius: 0 8px 8px 0;
+            }
+            .comment-author {
+                font-weight: bold;
+                color: #4fbcff;
+                margin-bottom: 8px;
+            }
+            .comment-body {
+                line-height: 1.5;
+            }
+            .update-time {
+                text-align: center;
+                color: #808080;
+                margin-bottom: 30px;
+            }
         </style>
     </head>
     <body>
         <h1>Daily Top Reddit Posts from r/chatgpt</h1>
-        <p>Updated on {{date}} at 3:00 PM</p>
+        <p class="update-time">Updated on {{date}} UTC</p>
         {% for post in posts %}
         <div class="post">
-            <div class="post-title"><a href="{{post.url}}" target="_blank">{{ post.title }}</a> (by {{ post.author }})</div>
-            <p>{{ post.selftext }}</p>
+            <div class="post-title"><a href="{{post.url}}" target="_blank">{{ post.title }}</a></div>
+            <div class="post-author">Posted by u/{{ post.author }}</div>
+            {% if post.selftext %}
+            <div class="post-content">{{ post.selftext }}</div>
+            {% endif %}
+            {% if post.media_type == 'image' %}
+            <div class="media-container">
+                <img src="{{ post.media_url }}" alt="Post image">
+            </div>
+            {% elif post.media_type == 'video' %}
+            <div class="media-container">
+                <video controls>
+                    <source src="{{ post.media_url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            {% endif %}
             <h3>Top Comments:</h3>
             {% for comment in post.comments %}
             <div class="comment">
-                <div class="comment-author">{{ comment.author }}</div>
+                <div class="comment-author">u/{{ comment.author }}</div>
                 <div class="comment-body">{{ comment.body }}</div>
             </div>
             {% endfor %}
@@ -86,7 +170,7 @@ def generate_html(posts_info):
     </html>
     """
     template = Template(template_str)
-    html = template.render(posts=posts_info, date=datetime.datetime.utcnow().strftime("%Y-%m-%d"))
+    html = template.render(posts=posts_info, date=datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M"))
     return html
 
 def main():
@@ -99,14 +183,31 @@ def main():
         title = data['title']
         author = data['author']
         url = f"https://www.reddit.com{data['permalink']}"
-        selftext = data['selftext'][:300] + '...' if len(data['selftext']) > 300 else data['selftext']
+        selftext = data['selftext'][:500] + '...' if len(data['selftext']) > 500 else data['selftext']
+        
+        # Handle media content
+        media_type = None
+        media_url = None
+        
+        # Handle images
+        if data.get('post_hint') == 'image':
+            media_type = 'image'
+            media_url = data['url']
+        # Handle videos
+        elif data.get('is_video'):
+            media_type = 'video'
+            if 'reddit_video' in data['media']:
+                media_url = data['media']['reddit_video']['fallback_url']
+        
         comments = get_top_comments(token, post_id)
         posts_info.append({
             'title': title,
             'author': author,
             'url': url,
             'selftext': selftext,
-            'comments': comments
+            'comments': comments,
+            'media_type': media_type,
+            'media_url': media_url
         })
 
     html = generate_html(posts_info)
