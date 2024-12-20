@@ -28,6 +28,7 @@ def get_token():
     }
     headers = {'User-Agent': USER_AGENT}
     res = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=headers)
+    res.raise_for_status()  # Added for error handling
     token = res.json()['access_token']
     return token
 
@@ -35,6 +36,7 @@ def get_top_posts(token, subreddit='chatgpt', limit=20):
     headers = {'Authorization': f'bearer {token}', 'User-Agent': USER_AGENT}
     url = f'https://oauth.reddit.com/r/{subreddit}/top?t=day&limit={limit}'
     res = requests.get(url, headers=headers)
+    res.raise_for_status()  # Added for error handling
     posts = res.json()['data']['children']
     return posts
 
@@ -45,6 +47,7 @@ def get_top_comments(token, subreddit, post_id, limit=3):
     }
     url = f'https://oauth.reddit.com/r/{subreddit}/comments/{post_id}?sort=top'
     res = requests.get(url, headers=headers)
+    res.raise_for_status()  # Added for error handling
     comment_data = res.json()
 
     # comment_data typically looks like: [ {post info}, {comment tree} ]
@@ -207,6 +210,8 @@ def generate_html(all_posts_info):
                 padding-bottom: 10px;
             }
         </style>
+        <!-- Include dash.js library -->
+        <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
     </head>
     <body>
         <h1>Daily Top Reddit Posts</h1>
@@ -229,11 +234,15 @@ def generate_html(all_posts_info):
                 </div>
                 {% elif post.media_type == 'video' %}
                 <div class="media-container">
-                    <video controls>
-                        <source src="{{ post.media_url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <video id="video{{ loop.parent.loop.index0 }}-{{ loop.index0 }}" controls></video>
                 </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var url = "{{ post.media_url }}";
+                        var player = dashjs.MediaPlayer().create();
+                        player.initialize(document.querySelector("#video{{ loop.parent.loop.index0 }}-{{ loop.index0 }}"), url, true);
+                    });
+                </script>
                 {% endif %}
                 
                 {% if post.comments %}
@@ -266,11 +275,21 @@ def generate_html(all_posts_info):
     return html
 
 def main():
-    token = get_token()
+    try:
+        token = get_token()
+    except requests.exceptions.RequestException as e:
+        print(f"Error obtaining token: {e}")
+        return
+
     all_posts_info = {}
     
     for subreddit, post_limit in SUBREDDITS.items():
-        posts = get_top_posts(token, subreddit=subreddit, limit=post_limit)
+        try:
+            posts = get_top_posts(token, subreddit=subreddit, limit=post_limit)
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching posts from r/{subreddit}: {e}")
+            continue
+
         posts_info = []
         
         for p in posts:
@@ -296,8 +315,16 @@ def main():
             elif data.get('is_video'):
                 media_type = 'video'
                 if 'reddit_video' in data.get('media', {}):
-                    media_url = data['media']['reddit_video']['fallback_url']
-            
+                    dash_url = data['media']['reddit_video'].get('dash_url')
+                    if dash_url:
+                        media_url = dash_url  # Use DASH manifest URL for dash.js
+                    else:
+                        # Fallback to fallback_url if dash_url is not available
+                        media_url = data['media']['reddit_video'].get('fallback_url')
+                else:
+                    # Handle cases where 'media' might not contain 'reddit_video'
+                    media_url = data.get('secure_media', {}).get('reddit_video', {}).get('fallback_url')
+
             comments = get_top_comments(token, subreddit, post_id)
             posts_info.append({
                 'title': title,
@@ -314,8 +341,10 @@ def main():
         all_posts_info[subreddit] = posts_info
 
     html = generate_html(all_posts_info)
+    os.makedirs("docs", exist_ok=True)  # Ensure the 'docs' directory exists
     with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(html)
+    print("HTML file generated successfully at 'docs/index.html'.")
 
 if __name__ == "__main__":
     main()
