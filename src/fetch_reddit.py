@@ -1,7 +1,7 @@
 import os
 import requests
 import datetime
-from jinja2 import Template  # You can use jinja2 for templating. If not available, just inline string.
+from jinja2 import Template
 
 CLIENT_ID = os.environ.get('REDDIT_CLIENT_ID')
 CLIENT_SECRET = os.environ.get('REDDIT_CLIENT_SECRET')
@@ -22,26 +22,29 @@ def get_token():
     token = res.json()['access_token']
     return token
 
-def get_top_posts(token, subreddit='singularity', limit=20):
+def get_top_posts(token, subreddit='chatgpt', limit=20):
     headers = {'Authorization': f'bearer {token}', 'User-Agent': USER_AGENT}
     url = f'https://oauth.reddit.com/r/{subreddit}/top?t=day&limit={limit}'
     res = requests.get(url, headers=headers)
     posts = res.json()['data']['children']
     return posts
 
-def get_top_comments(token, post_id, limit=3):
+def get_top_comments(token, subreddit, post_id, limit=3):
     headers = {'Authorization': f'bearer {token}', 'User-Agent': USER_AGENT}
-    url = f'https://oauth.reddit.com/r/chatgpt/comments/{post_id}?limit={limit}&sort=best'
+    url = f'https://oauth.reddit.com/r/{subreddit}/comments/{post_id}?limit={limit}&sort=best'
     res = requests.get(url, headers=headers)
-    # The first object in response is the post, second is comments
     comment_data = res.json()
-    if isinstance(comment_data, list) and len(comment_data) > 1 and 'data' in comment_data[1] and 'children' in comment_data[1]['data']:
+
+    # Expecting a list: [ {post info}, {comments info} ]
+    if (isinstance(comment_data, list) and len(comment_data) > 1 
+        and 'data' in comment_data[1] 
+        and 'children' in comment_data[1]['data']):
         comments = comment_data[1]['data']['children']
         top_comments = []
         for c in comments:
             if c['kind'] == 't1':
                 replies = []
-                if c['data'].get('replies'):
+                if c['data'].get('replies') and isinstance(c['data']['replies'], dict):
                     for reply in c['data']['replies']['data']['children'][:3]:
                         if reply['kind'] == 't1':
                             replies.append({
@@ -59,13 +62,13 @@ def get_top_comments(token, post_id, limit=3):
     else:
         return []
 
-def generate_html(posts_info):
+def generate_html(posts_info, subreddit='chatgpt'):
     template_str = """
     <!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Daily Reddit Feed (r/chatgpt)</title>
+        <title>Daily Reddit Feed (r/{{subreddit}})</title>
         <style>
             :root {
                 --primary-color: #1a1a1b;
@@ -85,6 +88,11 @@ def generate_html(posts_info):
                 text-align: center;
                 color: var(--accent-color);
             }
+            .update-time {
+                text-align: center;
+                color: #808080;
+                margin-bottom: 30px;
+            }
             .post {
                 margin-bottom: 40px;
                 padding: 20px;
@@ -95,7 +103,7 @@ def generate_html(posts_info):
             .post-title {
                 font-size: 1.4em;
                 font-weight: bold;
-                margin-bottom: 15px;
+                margin-bottom: 5px;
             }
             .post-title a {
                 color: var(--secondary-color);
@@ -104,28 +112,33 @@ def generate_html(posts_info):
             .post-title a:hover {
                 color: var(--accent-color);
             }
+            .post-stats {
+                font-size: 0.9em;
+                color: #b3b3b3;
+                margin-bottom: 15px;
+            }
             .post-author {
                 color: #4fbcff;
+                font-size: 0.9em;
                 margin-bottom: 15px;
             }
             .post-content {
                 margin: 15px 0;
+                line-height: 1.6;
             }
             .media-container {
-                position: relative;
-                width: 100%;
-                height: 0;
-                padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                max-width: 100%;
                 margin: 15px 0;
             }
             .media-container img, .media-container video {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+                max-width: 100%;
                 border-radius: 4px;
+            }
+            .comment-section-title {
+                font-size: 1.2em;
+                margin-top: 30px;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 5px;
             }
             .comment {
                 margin: 15px 0;
@@ -143,6 +156,7 @@ def generate_html(posts_info):
                 line-height: 1.5;
             }
             .reply {
+                margin-top: 10px;
                 margin-left: 20px;
                 padding: 10px;
                 border-left: 2px solid var(--accent-color);
@@ -157,20 +171,17 @@ def generate_html(posts_info):
             .reply-body {
                 line-height: 1.4;
             }
-            .update-time {
-                text-align: center;
-                color: #808080;
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <h1>Daily Top Reddit Posts from r/chatgpt</h1>
+        <h1>Daily Top Reddit Posts from r/{{subreddit}}</h1>
         <p class="update-time">Updated on {{date}} UTC</p>
         {% for post in posts %}
         <div class="post">
             <div class="post-title"><a href="{{post.url}}" target="_blank">{{ post.title }}</a></div>
+            <div class="post-stats">↑ {{ post.ups }} | {{ post.num_comments }} comments</div>
             <div class="post-author">Posted by u/{{ post.author }}</div>
+            
             {% if post.selftext %}
             <div class="post-content">{{ post.selftext }}</div>
             {% endif %}
@@ -186,7 +197,9 @@ def generate_html(posts_info):
                 </video>
             </div>
             {% endif %}
-            <h3>Top Comments:</h3>
+            
+            {% if post.comments %}
+            <h3 class="comment-section-title">Top Comments:</h3>
             {% for comment in post.comments %}
             <div class="comment">
                 <div class="comment-author">u/{{ comment.author }}</div>
@@ -199,25 +212,30 @@ def generate_html(posts_info):
                 {% endfor %}
             </div>
             {% endfor %}
+            {% endif %}
         </div>
         {% endfor %}
     </body>
     </html>
     """
     template = Template(template_str)
-    html = template.render(posts=posts_info, date=datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M"))
+    html = template.render(posts=posts_info, date=datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M"), subreddit=subreddit)
     return html
 
 def main():
     token = get_token()
-    posts = get_top_posts(token)
+    subreddit = 'chatgpt'
+    posts = get_top_posts(token, subreddit=subreddit)
     posts_info = []
     for p in posts:
         data = p['data']
         post_id = data['id']
         title = data['title']
         author = data['author']
+        ups = data.get('ups', 0)
+        num_comments = data.get('num_comments', 0)
         url = f"https://www.reddit.com{data['permalink']}"
+        # Truncate selftext if too long
         selftext = data['selftext'][:500] + '...' if len(data['selftext']) > 500 else data['selftext']
         
         # Handle media content
@@ -231,10 +249,10 @@ def main():
         # Handle videos
         elif data.get('is_video'):
             media_type = 'video'
-            if 'reddit_video' in data['media']:
+            if 'reddit_video' in data.get('media', {}):
                 media_url = data['media']['reddit_video']['fallback_url']
         
-        comments = get_top_comments(token, post_id)
+        comments = get_top_comments(token, subreddit, post_id)
         posts_info.append({
             'title': title,
             'author': author,
@@ -242,10 +260,12 @@ def main():
             'selftext': selftext,
             'comments': comments,
             'media_type': media_type,
-            'media_url': media_url
+            'media_url': media_url,
+            'ups': ups,
+            'num_comments': num_comments
         })
 
-    html = generate_html(posts_info)
+    html = generate_html(posts_info, subreddit=subreddit)
     # Write to index.html
     with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(html)
