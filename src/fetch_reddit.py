@@ -22,16 +22,16 @@ def get_token():
     token = res.json()['access_token']
     return token
 
-def get_top_posts(token, subreddit='chatgpt', limit=10):
+def get_top_posts(token, subreddit='singularity', limit=20):
     headers = {'Authorization': f'bearer {token}', 'User-Agent': USER_AGENT}
     url = f'https://oauth.reddit.com/r/{subreddit}/top?t=day&limit={limit}'
     res = requests.get(url, headers=headers)
     posts = res.json()['data']['children']
     return posts
 
-def get_top_comments(token, post_id, limit=5):
+def get_top_comments(token, post_id, limit=3):
     headers = {'Authorization': f'bearer {token}', 'User-Agent': USER_AGENT}
-    url = f'https://oauth.reddit.com/r/chatgpt/comments/{post_id}?limit={limit}'
+    url = f'https://oauth.reddit.com/r/chatgpt/comments/{post_id}?limit={limit}&sort=best'
     res = requests.get(url, headers=headers)
     # The first object in response is the post, second is comments
     comment_data = res.json()
@@ -40,9 +40,18 @@ def get_top_comments(token, post_id, limit=5):
         top_comments = []
         for c in comments:
             if c['kind'] == 't1':
+                replies = []
+                if c['data'].get('replies'):
+                    for reply in c['data']['replies']['data']['children'][:3]:
+                        if reply['kind'] == 't1':
+                            replies.append({
+                                'author': reply['data']['author'],
+                                'body': reply['data']['body']
+                            })
                 top_comments.append({
                     'author': c['data']['author'],
-                    'body': c['data']['body']
+                    'body': c['data']['body'],
+                    'replies': replies
                 })
             if len(top_comments) == limit:
                 break
@@ -102,15 +111,19 @@ def generate_html(posts_info):
                 margin: 15px 0;
             }
             .media-container {
-                max-width: 100%;
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio */
                 margin: 15px 0;
             }
-            .media-container img {
-                max-width: 100%;
-                border-radius: 4px;
-            }
-            .media-container video {
-                max-width: 100%;
+            .media-container img, .media-container video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
                 border-radius: 4px;
             }
             .comment {
@@ -127,6 +140,21 @@ def generate_html(posts_info):
             }
             .comment-body {
                 line-height: 1.5;
+            }
+            .reply {
+                margin-left: 20px;
+                padding: 10px;
+                border-left: 2px solid var(--accent-color);
+                background: #3a3a3a;
+                border-radius: 4px;
+            }
+            .reply-author {
+                font-weight: bold;
+                color: #4fbcff;
+                margin-bottom: 5px;
+            }
+            .reply-body {
+                line-height: 1.4;
             }
             .update-time {
                 text-align: center;
@@ -162,6 +190,12 @@ def generate_html(posts_info):
             <div class="comment">
                 <div class="comment-author">u/{{ comment.author }}</div>
                 <div class="comment-body">{{ comment.body }}</div>
+                {% for reply in comment.replies %}
+                <div class="reply">
+                    <div class="reply-author">u/{{ reply.author }}</div>
+                    <div class="reply-body">{{ reply.body }}</div>
+                </div>
+                {% endfor %}
             </div>
             {% endfor %}
         </div>
