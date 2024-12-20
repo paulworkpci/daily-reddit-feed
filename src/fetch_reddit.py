@@ -235,14 +235,14 @@ def generate_html(all_posts_info):
                 </div>
                 {% elif post.media_type == 'video' %}
                 <div class="media-container">
-                    <video id="video{{ loop.parent.loop.index0 }}-{{ loop.index0 }}" controls></video>
+                    <video id="video{{ post.post_id }}" controls></video>
                 </div>
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
                         var dashUrl = "{{ post.dash_url }}";
                         var hlsUrl = "{{ post.hls_url }}";
                         var fallbackUrl = "{{ post.media_url }}";
-                        var videoElement = document.querySelector("#video{{ loop.parent.loop.index0 }}-{{ loop.index0 }}");
+                        var videoElement = document.querySelector("#video{{ post.post_id }}");
 
                         if (dashUrl) {
                             // Use dash.js if DASH manifest is available
@@ -352,6 +352,7 @@ def main():
 
             comments = get_top_comments(token, subreddit, post_id)
             posts_info.append({
+                'post_id': post_id,  # Added post_id for unique identification
                 'title': title,
                 'author': author,
                 'url': url,
