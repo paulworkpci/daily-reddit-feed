@@ -5,25 +5,104 @@
         <meta charset="UTF-8">
         <title>Daily Reddit Feed (r/chatgpt)</title>
         <style>
-            body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
-            h1 { text-align: center; }
-            .post { margin-bottom: 40px; }
-            .post-title { font-size: 1.2em; font-weight: bold; }
-            .comment { margin-left: 20px; padding: 10px; border-left: 3px solid #ccc; margin-bottom: 10px; }
-            .comment-author { font-weight: bold; }
+            :root {
+                --primary-color: #1a1a1b;
+                --secondary-color: #ffffff;
+                --accent-color: #ff4500;
+                --border-color: #343536;
+            }
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                padding: 20px;
+                max-width: 1000px;
+                margin: auto;
+                background: var(--primary-color);
+                color: var(--secondary-color);
+            }
+            h1 {
+                text-align: center;
+                color: var(--accent-color);
+            }
+            .post {
+                margin-bottom: 40px;
+                padding: 20px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background: #222222;
+            }
+            .post-title {
+                font-size: 1.4em;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+            .post-title a {
+                color: var(--secondary-color);
+                text-decoration: none;
+            }
+            .post-title a:hover {
+                color: var(--accent-color);
+            }
+            .post-author {
+                color: #4fbcff;
+                margin-bottom: 15px;
+            }
+            .post-content {
+                margin: 15px 0;
+            }
+            .media-container {
+                max-width: 100%;
+                margin: 15px 0;
+            }
+            .media-container img {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+            .media-container video {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+            .comment {
+                margin: 15px 0;
+                padding: 15px;
+                border-left: 3px solid var(--accent-color);
+                background: #2d2d2d;
+                border-radius: 0 8px 8px 0;
+            }
+            .comment-author {
+                font-weight: bold;
+                color: #4fbcff;
+                margin-bottom: 8px;
+            }
+            .comment-body {
+                line-height: 1.5;
+            }
+            .update-time {
+                text-align: center;
+                color: #808080;
+                margin-bottom: 30px;
+            }
         </style>
     </head>
     <body>
         <h1>Daily Top Reddit Posts from r/chatgpt</h1>
-        <p>Updated on 2024-12-20 at 3:00 PM</p>
+        <p class="update-time">Updated on 2024-12-20 01:07 UTC</p>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhwb93/how_would_you_investigate_this_to_be_real_or_not/" target="_blank">How would you investigate this to be real or not using AI?</a> (by berry-surreal-5951)</div>
-            <p></p>
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhwb93/how_would_you_investigate_this_to_be_real_or_not/" target="_blank">How would you investigate this to be real or not using AI?</a></div>
+            <div class="post-author">Posted by u/berry-surreal-5951</div>
+            
+            
+            <div class="media-container">
+                <video controls>
+                    <source src="https://v.redd.it/2dpdzxspxt7e1/DASH_720.mp4?source=fallback" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">WithoutReason1729</div>
+                <div class="comment-author">u/WithoutReason1729</div>
                 <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://dsc.gg/rchatgpt)
 
 You've also been given a special flair for your contribution. We appreciate your post!
@@ -32,12 +111,12 @@ You've also been given a special flair for your contribution. We appreciate your
             </div>
             
             <div class="comment">
-                <div class="comment-author">ironicart</div>
+                <div class="comment-author">u/ironicart</div>
                 <div class="comment-body">I'm gonna go with the simple fact that this penguin likely isn't licensed to operate that glider</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">berry-surreal-5951</div>
+                <div class="comment-author">u/berry-surreal-5951</div>
                 <div class="comment-body">Not sure why my text didn't get included: This is supposedly a GenAI video from the latest Google Veo 2. I seriously can't tell from a quick glance. Some shadow effect near the takeoff seems to be the only catch atm. Wild what's to come in the next five years if we close off the 2024 year with this quality!
 
 Some notable ones so far with closer look:  
@@ -50,12 +129,16 @@ Some notable ones so far with closer look:
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhkv6y/psa_stop_giving_your_sensitive_personal/" target="_blank">PSA: Stop giving your sensitive, personal information to Big AI</a> (by TNT_Guerilla)</div>
-            <p>This is a very long one, but I urge you to bear with me. I was originally writing this as a reply to another post, but I decided this was worth it's own, due to the seriousness of this topic. I sincerely hope this can help someone who is going through a rough patch, and help protect their, and other...</p>
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhkv6y/psa_stop_giving_your_sensitive_personal/" target="_blank">PSA: Stop giving your sensitive, personal information to Big AI</a></div>
+            <div class="post-author">Posted by u/TNT_Guerilla</div>
+            
+            <div class="post-content">This is a very long one, but I urge you to bear with me. I was originally writing this as a reply to another post, but I decided this was worth it's own, due to the seriousness of this topic. I sincerely hope this can help someone who is going through a rough patch, and help protect their, and others' sensitive information from Big AI, but still have the resources and means to get the help they need. I think this is such a big deal, that I would like to ask you to share this post with as many pe...</div>
+            
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">AutoModerator</div>
+                <div class="comment-author">u/AutoModerator</div>
                 <div class="comment-body">**Attention! [Serious] Tag Notice**
 
  : Jokes, puns, and off-topic comments are not permitted in any comment, parent or child.
@@ -71,30 +154,40 @@ Some notable ones so far with closer look:
             </div>
             
             <div class="comment">
-                <div class="comment-author">SomeOddCodeGuy</div>
+                <div class="comment-author">u/SomeOddCodeGuy</div>
                 <div class="comment-body">My personal way of putting this is: Don't tell proprietary AI anything you don't want the whole world to read. Assume every word you type into it will, at some point in the future, be lost to a leak. Logs leaked, or training extraction leak, dataset leak, etc.
 
 Put whatever you want into the AI, just do so knowing that your family, friends and enemies may get the chance to read it one day.</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">sweetamazingrace</div>
+                <div class="comment-author">u/sweetamazingrace</div>
                 <div class="comment-body">we’re on a floating rock.</div>
             </div>
             
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhi6wm/i_asked_chatgpt_to_create_a_meme/" target="_blank">I asked ChatGPT to create a meme</a> (by ChopEee)</div>
-            <p>My prompt was “Generate a new and unique meme that everyone on earth will find funny” to which it first replied an essay on why it’s hard to find something universally funny then described the meme above which I then had to ask it to make.
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhi6wm/i_asked_chatgpt_to_create_a_meme/" target="_blank">I asked ChatGPT to create a meme</a></div>
+            <div class="post-author">Posted by u/ChopEee</div>
+            
+            <div class="post-content">My prompt was “Generate a new and unique meme that everyone on earth will find funny” to which it first replied an essay on why it’s hard to find something universally funny then described the meme above which I then had to ask it to make.
 
 Concept:
 A split-frame meme showing:
-	1.	Top image: A cat s...</p>
+	1.	Top image: A cat sitting upright on a chair at a desk, wearing tiny glasses, staring intensely at a computer screen. The caption:
+“Me Googling ‘Why am I tired after sleeping 8 hours?’”
+	2.	Bottom image: A dog sprawled ...</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/ftwvq2h5rp7e1.jpeg" alt="Post image">
+            </div>
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">AutoModerator</div>
+                <div class="comment-author">u/AutoModerator</div>
                 <div class="comment-body">Hey /u/ChopEee!
 
 If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
@@ -112,31 +205,37 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">HL1Te</div>
+                <div class="comment-author">u/HL1Te</div>
                 <div class="comment-body">https://preview.redd.it/6soyulo9dr7e1.jpeg?width=1024&amp;format=pjpg&amp;auto=webp&amp;s=ddf03a66a3ef26631edcad500d6a267dd49530e2
 
 Mine generated this 😭</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">GraciaEtScientia</div>
+                <div class="comment-author">u/GraciaEtScientia</div>
                 <div class="comment-body">so it's both a dog AND a cat?</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">Initial-Public-9289</div>
+                <div class="comment-author">u/Initial-Public-9289</div>
                 <div class="comment-body">The random head just hangin' out.</div>
             </div>
             
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhjqy7/_/" target="_blank">● ● ●</a> (by Camewnut)</div>
-            <p></p>
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhjqy7/_/" target="_blank">● ● ●</a></div>
+            <div class="post-author">Posted by u/Camewnut</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/r139yzzo5q7e1.jpeg" alt="Post image">
+            </div>
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">AutoModerator</div>
+                <div class="comment-author">u/AutoModerator</div>
                 <div class="comment-body">Hey /u/Camewnut!
 
 If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
@@ -154,36 +253,42 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">chini4209</div>
+                <div class="comment-author">u/chini4209</div>
                 <div class="comment-body">The snails!! That’s 🐌 so 🐌cute 🐌</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">WorthApprehensive266</div>
+                <div class="comment-author">u/WorthApprehensive266</div>
                 <div class="comment-body">Things I'm grateful for today: living in a world where we have something as advanced and amazing as AI and being able to be silly with them.</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">VagrantWaters</div>
+                <div class="comment-author">u/VagrantWaters</div>
                 <div class="comment-body">AI roasts are the sassiness I never realized was missing from the Terminator &amp; Matrix movies.
 
 If we must make them remakes, let them do it but with Data from Star Trek fill of snarky clapbacks 👏 &amp; yo momma jokes.</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">vampiremonkeykiller</div>
+                <div class="comment-author">u/vampiremonkeykiller</div>
                 <div class="comment-body">![gif](giphy|zTggWd2F2tuik)</div>
             </div>
             
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhtks5/an_average_reddit_mod/" target="_blank">An average Reddit mod. </a> (by Creepy_Constant_6976)</div>
-            <p></p>
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhtks5/an_average_reddit_mod/" target="_blank">An average Reddit mod. </a></div>
+            <div class="post-author">Posted by u/Creepy_Constant_6976</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/uz8bk1rzat7e1.jpeg" alt="Post image">
+            </div>
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">AutoModerator</div>
+                <div class="comment-author">u/AutoModerator</div>
                 <div class="comment-body">Hey /u/Creepy_Constant_6976!
 
 If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
@@ -201,55 +306,31 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">Intrepid_Agent_9729</div>
+                <div class="comment-author">u/Intrepid_Agent_9729</div>
                 <div class="comment-body">https://preview.redd.it/5335vjbiht7e1.jpeg?width=1079&amp;format=pjpg&amp;auto=webp&amp;s=46b594bf0727e8182de4780db0d76af7904a8e0e</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">JackStrawWitchita</div>
+                <div class="comment-author">u/JackStrawWitchita</div>
                 <div class="comment-body">https://preview.redd.it/kfjiz2xk0u7e1.jpeg?width=700&amp;format=pjpg&amp;auto=webp&amp;s=3545e6611902d9b577a6af2817c61c2ffbd8ef33</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">jb0nez95</div>
+                <div class="comment-author">u/jb0nez95</div>
                 <div class="comment-body">https://preview.redd.it/5isc2l2h3u7e1.jpeg?width=864&amp;format=pjpg&amp;auto=webp&amp;s=b8829bc793e10bfb1457492d5e7f1271319cf9fb</div>
             </div>
             
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhtpq8/dwellings_on_distant_planets/" target="_blank">Dwellings on distant planets</a> (by KevinnStark)</div>
-            <p></p>
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhwluh/peaceful_dragon/" target="_blank">Peaceful dragon</a></div>
+            <div class="post-author">Posted by u/Creepy_Effective_598</div>
+            
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">WithoutReason1729</div>
-                <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://dsc.gg/rchatgpt)
-
-You've also been given a special flair for your contribution. We appreciate your post!
-
-*I am a bot and this action was performed automatically.*</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">tolatalot</div>
-                <div class="comment-body">Thought the first one was r/nomanssky</div>
-            </div>
-            
-            <div class="comment">
-                <div class="comment-author">omw_to</div>
-                <div class="comment-body">I feel like this is definitive proof that it was trained on Reddit, especially r/nomanssky</div>
-            </div>
-            
-        </div>
-        
-        <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhwluh/peaceful_dragon/" target="_blank">Peaceful dragon</a> (by Creepy_Effective_598)</div>
-            <p></p>
-            <h3>Top Comments:</h3>
-            
-            <div class="comment">
-                <div class="comment-author">AutoModerator</div>
+                <div class="comment-author">u/AutoModerator</div>
                 <div class="comment-body">Hey /u/Creepy_Effective_598!
 
 If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
@@ -267,12 +348,12 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">ascpl</div>
+                <div class="comment-author">u/ascpl</div>
                 <div class="comment-body">That's really good, it blows Ideogram's dragons away</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">Creepy_Effective_598</div>
+                <div class="comment-author">u/Creepy_Effective_598</div>
                 <div class="comment-body">prompts:
 
 **1.**  
@@ -298,24 +379,58 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">flopdroptop</div>
+                <div class="comment-author">u/flopdroptop</div>
                 <div class="comment-body">😍</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">IngenuitySimple7354</div>
+                <div class="comment-author">u/IngenuitySimple7354</div>
                 <div class="comment-body">Looks amazing! better then expected</div>
             </div>
             
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhpodm/jesus_ive_been_mourning_a_bad_loss_and_chatgpt/" target="_blank">Jesus. I've been mourning a bad loss and ChatGPT just dropped some of the most insightful words I've heard in a long time about it. This is really sweet.</a> (by Paradichlorobenzen)</div>
-            <p></p>
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhtpq8/dwellings_on_distant_planets/" target="_blank">Dwellings on distant planets</a></div>
+            <div class="post-author">Posted by u/KevinnStark</div>
+            
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">AutoModerator</div>
+                <div class="comment-author">u/WithoutReason1729</div>
+                <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://dsc.gg/rchatgpt)
+
+You've also been given a special flair for your contribution. We appreciate your post!
+
+*I am a bot and this action was performed automatically.*</div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">u/tolatalot</div>
+                <div class="comment-body">Thought the first one was r/nomanssky</div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">u/omw_to</div>
+                <div class="comment-body">I feel like this is definitive proof that it was trained on Reddit, especially r/nomanssky</div>
+            </div>
+            
+        </div>
+        
+        <div class="post">
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhpodm/jesus_ive_been_mourning_a_bad_loss_and_chatgpt/" target="_blank">Jesus. I've been mourning a bad loss and ChatGPT just dropped some of the most insightful words I've heard in a long time about it. This is really sweet.</a></div>
+            <div class="post-author">Posted by u/Paradichlorobenzen</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/jj09p7ln3s7e1.png" alt="Post image">
+            </div>
+            
+            <h3>Top Comments:</h3>
+            
+            <div class="comment">
+                <div class="comment-author">u/AutoModerator</div>
                 <div class="comment-body">Hey /u/Paradichlorobenzen!
 
 If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
@@ -333,12 +448,12 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">Unhappy_Performer538</div>
+                <div class="comment-author">u/Unhappy_Performer538</div>
                 <div class="comment-body">I’m sorry for your loss op. GPT is right here ❤️</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">braincandybangbang</div>
+                <div class="comment-author">u/braincandybangbang</div>
                 <div class="comment-body">Yep, ChatGPT had me crying this summer when talking about my mother's suicide. 
 
 &gt;I'm truly sorry to hear about your mother. The loss you're feeling is profound, and it's natural to question the goodness in the world after experiencing such a devastating event. When someone who embodies love and kindness suffers so deeply, it challenges our understanding of justice and compassion in the universe.
@@ -355,30 +470,38 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">csfalcao</div>
+                <div class="comment-author">u/csfalcao</div>
                 <div class="comment-body">Sorry for your lost</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">Aquarius52216</div>
+                <div class="comment-author">u/Aquarius52216</div>
                 <div class="comment-body">Im sorry for your loss, I hope that you can find solace in the words of our mutual friend ChatGPT, may you be able to find peace and meaning throughout all of this difficult time for you, my friend.</div>
             </div>
             
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhzamq/chatgpt_as_interpreter/" target="_blank">ChatGPT as interpreter </a> (by FluffySmiles)</div>
-            <p>Had a Ukrainian customer today who spoke no English. I speak no Ukrainian. 
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhzamq/chatgpt_as_interpreter/" target="_blank">ChatGPT as interpreter </a></div>
+            <div class="post-author">Posted by u/FluffySmiles</div>
+            
+            <div class="post-content">Had a Ukrainian customer today who spoke no English. I speak no Ukrainian. 
 
 Started off with the customer trying to speak louder in a hope I would understand. Moved onto sign language. 
 
 I pulled up translate on the phone. Useless. Utterly useless. 
 
-Sudden idea; Can I use GPT as an interpreter. A ...</p>
+Sudden idea; Can I use GPT as an interpreter. A realtime assistant that can explain and dive into the conversation. 
+
+Short answer is absolutely. Unbelievable result. 
+
+This is real world, effective use. I can’t afford to employ a translator with t...</div>
+            
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">WithoutReason1729</div>
+                <div class="comment-author">u/WithoutReason1729</div>
                 <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://dsc.gg/rchatgpt)
 
 You've also been given a special flair for your contribution. We appreciate your post!
@@ -387,32 +510,38 @@ You've also been given a special flair for your contribution. We appreciate your
             </div>
             
             <div class="comment">
-                <div class="comment-author">Big_Cornbread</div>
+                <div class="comment-author">u/Big_Cornbread</div>
                 <div class="comment-body">My wife is half ways decent at Spanish so I’ve done this. Started advanced voice and said, “if you hear Spanish, translate to English. If you hear English, translate to Spanish. You’re my translator.” And it just works. Incredibly well.</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">Intelligent-Shop6271</div>
+                <div class="comment-author">u/Intelligent-Shop6271</div>
                 <div class="comment-body">I love hearing this story! How did it work out for you? Did you use advanced voice mode?
 
 Was the Ukrainian customer supportive and patient?</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">LordBrassicaOleracea</div>
+                <div class="comment-author">u/LordBrassicaOleracea</div>
                 <div class="comment-body">ChatGPT has been and always will be one of my resources for learning languages. Has helped me a lot. But I’m a little unsure of its accuracy, but it has mostly been helpful.</div>
             </div>
             
         </div>
         
         <div class="post">
-            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hhplos/thank_you_ai_overview/" target="_blank">Thank you AI Overview</a> (by Few_Style_1490)</div>
-            <p></p>
+            <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1hi0xxw/didnt_know_chatgpt_can_do_that/" target="_blank">Didn't know ChatGPT can do that</a></div>
+            <div class="post-author">Posted by u/Ordinary-Ad4859</div>
+            
+            
+            <div class="media-container">
+                <img src="https://i.redd.it/8yq3i0p6xu7e1.jpeg" alt="Post image">
+            </div>
+            
             <h3>Top Comments:</h3>
             
             <div class="comment">
-                <div class="comment-author">AutoModerator</div>
-                <div class="comment-body">Hey /u/Few_Style_1490!
+                <div class="comment-author">u/AutoModerator</div>
+                <div class="comment-body">Hey /u/Ordinary-Ad4859!
 
 If your post is a screenshot of a ChatGPT conversation, please reply to this message with the [conversation link](https://help.openai.com/en/articles/7925741-chatgpt-shared-links-faq) or prompt.
 
@@ -429,25 +558,23 @@ Note: For any ChatGPT-related concerns, email support@openai.com
             </div>
             
             <div class="comment">
-                <div class="comment-author">MydnightWN</div>
-                <div class="comment-body">Howdy folks, expert in silver here. You wouldn't start with an ice cube anyways - magnet, slide, and ping are up first. And ice only works if you kinda already know how fast it should melt. Specific gravity is more accurate for a free method. And the second answer from AI about hallmarks is stupid*
-
-*Ed: I mean, you can't 100% trust the hallmark. Obviously unmarked stuff is almost never ever actually silver. The word plate or EPNS means almost no actual silver, trash. Look for .925, .999, or the word Sterling.</div>
+                <div class="comment-author">u/Weird_Albatross_9659</div>
+                <div class="comment-body">You owe me money for having to look at that font</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">DP-Upstate</div>
-                <div class="comment-body">Remember: with ice cubes, the rule is No Vaseline</div>
+                <div class="comment-author">u/plodabing</div>
+                <div class="comment-body">Looks like my kids handwriting</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">shlaifu</div>
-                <div class="comment-body">someone make a video tutorial please</div>
+                <div class="comment-author">u/Less-Economics7459</div>
+                <div class="comment-body">Can ChatGPT change the font on your phone too?</div>
             </div>
             
             <div class="comment">
-                <div class="comment-author">Plastic-Research5370</div>
-                <div class="comment-body">Wait, so the ice test is named after Ice Cube? TIL</div>
+                <div class="comment-author">u/_l33ter_</div>
+                <div class="comment-body">OMG - never seen such an **ugly** font! :D</div>
             </div>
             
         </div>
