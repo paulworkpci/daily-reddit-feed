@@ -111,7 +111,7 @@ def main():
 
     html = generate_html(posts_info)
     # Write to index.html
-    with open("index.html", "w", encoding="utf-8") as f:
+    with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(html)
 
 if __name__ == "__main__":
