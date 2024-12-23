@@ -1,4 +1,5 @@
 import os
+import random
 import requests
 import datetime
 from jinja2 import Template
@@ -60,24 +61,48 @@ def get_top_comments(token, subreddit, post_id, limit=3):
         top_comments = []
         for c in all_children:
             if c['kind'] == 't1':  # Ensure it's a comment
-                comment_author = c['data'].get('author')
-                comment_body = c['data'].get('body', '')
+                c_data = c['data']
+                comment_author = c_data.get('author')
+                comment_body = c_data.get('body', '')
+                comment_ups = c_data.get('ups', 0)
+                
+                # Convert UNIX time to human-readable
+                comment_created_utc = c_data.get('created_utc', None)
+                if comment_created_utc:
+                    comment_date_str = datetime.datetime.utcfromtimestamp(comment_created_utc).strftime("%Y-%m-%d %H:%M")
+                else:
+                    comment_date_str = "N/A"
 
                 # Process replies if they exist
-                replies_data = c['data'].get('replies')
+                replies_data = c_data.get('replies')
                 replies = []
                 if isinstance(replies_data, dict):
                     reply_children = replies_data['data'].get('children', [])
                     for reply in reply_children[:3]:  # Limit replies to 3
                         if reply['kind'] == 't1':
+                            r_data = reply['data']
+                            reply_author = r_data.get('author')
+                            reply_body = r_data.get('body', '')
+                            reply_ups = r_data.get('ups', 0)
+
+                            reply_created_utc = r_data.get('created_utc', None)
+                            if reply_created_utc:
+                                reply_date_str = datetime.datetime.utcfromtimestamp(reply_created_utc).strftime("%Y-%m-%d %H:%M")
+                            else:
+                                reply_date_str = "N/A"
+
                             replies.append({
-                                'author': reply['data'].get('author'),
-                                'body': reply['data'].get('body', '')
+                                'author': reply_author,
+                                'body': reply_body,
+                                'ups': reply_ups,
+                                'date': reply_date_str
                             })
 
                 top_comments.append({
                     'author': comment_author,
                     'body': comment_body,
+                    'ups': comment_ups,
+                    'date': comment_date_str,
                     'replies': replies
                 })
 
@@ -88,12 +113,14 @@ def get_top_comments(token, subreddit, post_id, limit=3):
     else:
         return []
 
-def generate_html(all_posts_info):
+def generate_html(posts):
+    # Notice this is now a single list (posts), not grouped by subreddit
     template_str = """
     <!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Daily Reddit Feed</title>
         <style>
             :root {
@@ -101,35 +128,56 @@ def generate_html(all_posts_info):
                 --secondary-color: #ffffff;
                 --accent-color: #ff4500;
                 --border-color: #343536;
+                --card-bg: #222222;
+                --comment-bg: #2d2d2d;
+                --reply-bg: #3a3a3a;
+            }
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
             }
             body {
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-                padding: 20px;
-                max-width: 1000px;
-                margin: auto;
+                padding: 1rem;
                 background: var(--primary-color);
                 color: var(--secondary-color);
+                line-height: 1.6;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
             }
             h1 {
                 text-align: center;
                 color: var(--accent-color);
+                font-size: clamp(1.5rem, 5vw, 2.5rem);
+                margin: 1rem 0;
             }
             .update-time {
                 text-align: center;
                 color: #808080;
-                margin-bottom: 30px;
+                margin-bottom: 2rem;
+                font-size: 0.9rem;
             }
             .post {
-                margin-bottom: 40px;
-                padding: 20px;
+                margin-bottom: 2rem;
+                padding: 1.25rem;
                 border: 1px solid var(--border-color);
-                border-radius: 8px;
-                background: #222222;
+                border-radius: 12px;
+                background: var(--card-bg);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .subreddit-name {
+                color: var(--accent-color);
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
             }
             .post-title {
-                font-size: 1.4em;
+                font-size: clamp(1.1rem, 4vw, 1.4rem);
                 font-weight: bold;
-                margin-bottom: 5px;
+                margin-bottom: 0.75rem;
             }
             .post-title a {
                 color: var(--secondary-color);
@@ -138,76 +186,79 @@ def generate_html(all_posts_info):
             .post-title a:hover {
                 color: var(--accent-color);
             }
-            .post-stats {
-                font-size: 0.9em;
-                color: #b3b3b3;
-                margin-bottom: 15px;
+            .post-meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-bottom: 1rem;
+                font-size: 0.9rem;
             }
-            .post-author {
-                color: #4fbcff;
-                font-size: 0.9em;
-                margin-bottom: 15px;
+            .post-stats, .post-author, .post-date {
+                color: #b3b3b3;
             }
             .post-content {
-                margin: 15px 0;
-                line-height: 1.6;
+                margin: 1rem 0;
+                font-size: 0.95rem;
             }
             .media-container {
-                max-width: 100%;
-                margin: 15px 0;
+                margin: 1rem 0;
+                border-radius: 8px;
+                overflow: hidden;
             }
             .media-container img, .media-container video {
-                max-width: 100%;
-                border-radius: 4px;
+                width: 100%;
+                height: auto;
+                display: block;
             }
             .comment-section-title {
-                font-size: 1.2em;
-                margin-top: 30px;
+                font-size: 1.1rem;
+                margin: 1.5rem 0 1rem;
+                padding-bottom: 0.5rem;
                 border-bottom: 1px solid var(--border-color);
-                padding-bottom: 5px;
             }
             .comment {
-                margin: 15px 0;
-                padding: 15px;
+                margin: 1rem 0;
+                padding: 1rem;
                 border-left: 3px solid var(--accent-color);
-                background: #2d2d2d;
+                background: var(--comment-bg);
                 border-radius: 0 8px 8px 0;
             }
-            .comment-author {
-                font-weight: bold;
-                color: #4fbcff;
-                margin-bottom: 8px;
+            .comment-header {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                align-items: baseline;
+                margin-bottom: 0.5rem;
             }
-            .comment-body {
-                line-height: 1.5;
+            .comment-author, .reply-author {
+                color: #4fbcff;
+                font-weight: 600;
+            }
+            .comment-meta, .reply-meta {
+                font-size: 0.8rem;
+                color: #b3b3b3;
             }
             .reply {
-                margin-top: 10px;
-                margin-left: 20px;
-                padding: 10px;
+                margin: 0.75rem 0 0 1rem;
+                padding: 0.75rem;
                 border-left: 2px solid var(--accent-color);
-                background: #3a3a3a;
+                background: var(--reply-bg);
                 border-radius: 4px;
             }
-            .reply-author {
-                font-weight: bold;
-                color: #4fbcff;
-                margin-bottom: 5px;
-            }
-            .reply-body {
-                line-height: 1.4;
-            }
-            /* Add new style for subreddit section */
-            .subreddit-section {
-                margin-bottom: 60px;
-            }
-            .subreddit-title {
-                font-size: 2em;
-                color: var(--accent-color);
-                margin: 40px 0 20px 0;
-                text-align: center;
-                border-bottom: 2px solid var(--border-color);
-                padding-bottom: 10px;
+            @media (max-width: 600px) {
+                body {
+                    padding: 0.5rem;
+                }
+                .post {
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+                }
+                .reply {
+                    margin-left: 0.5rem;
+                }
+                .comment {
+                    padding: 0.75rem;
+                }
             }
         </style>
         <!-- Include dash.js and hls.js libraries -->
@@ -215,27 +266,31 @@ def generate_html(all_posts_info):
         <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     </head>
     <body>
-        <h1>Daily Top Reddit Posts</h1>
-        <p class="update-time">Updated on {{date}} UTC</p>
-        {% for subreddit, posts in all_posts.items() %}
-        <div class="subreddit-section">
-            <h2 class="subreddit-title">r/{{subreddit}}</h2>
+        <div class="container">
+            <h1>Daily Top Reddit Posts</h1>
+            <p class="update-time">Updated on {{date}} UTC</p>
+            
             {% for post in posts %}
             <div class="post">
-                <div class="post-title"><a href="{{post.url}}" target="_blank">{{ post.title }}</a></div>
-                <div class="post-stats">↑ {{ post.ups }} | {{ post.num_comments }} comments</div>
-                <div class="post-author">Posted by u/{{ post.author }}</div>
+                <div class="subreddit-name">r/{{ post.subreddit }}</div>
+                <div class="post-title"><a href="{{ post.url }}" target="_blank">{{ post.title }}</a></div>
+                <div class="post-meta">
+                    <span class="post-stats">↑ {{ post.ups }} | {{ post.num_comments }} comments</span>
+                    <span class="post-author">u/{{ post.author }}</span>
+                    <span class="post-date">{{ post.post_date }}</span>
+                </div>
                 
                 {% if post.selftext %}
                 <div class="post-content">{{ post.selftext }}</div>
                 {% endif %}
+                
                 {% if post.media_type == 'image' %}
                 <div class="media-container">
-                    <img src="{{ post.media_url }}" alt="Post image">
+                    <img src="{{ post.media_url }}" alt="Post image" loading="lazy">
                 </div>
                 {% elif post.media_type == 'video' %}
                 <div class="media-container">
-                    <video id="video{{ post.post_id }}" controls></video>
+                    <video id="video{{ post.post_id }}" controls playsinline></video>
                 </div>
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -270,14 +325,21 @@ def generate_html(all_posts_info):
                 {% endif %}
                 
                 {% if post.comments %}
-                <h3 class="comment-section-title">Top Comments:</h3>
+                <h3 class="comment-section-title">Top Comments</h3>
                 {% for comment in post.comments %}
                 <div class="comment">
-                    <div class="comment-author">u/{{ comment.author }}</div>
+                    <div class="comment-header">
+                        <span class="comment-author">u/{{ comment.author }}</span>
+                        <span class="comment-meta">↑ {{ comment.ups }} | {{ comment.date }}</span>
+                    </div>
                     <div class="comment-body">{{ comment.body }}</div>
+                    
                     {% for reply in comment.replies %}
                     <div class="reply">
-                        <div class="reply-author">u/{{ reply.author }}</div>
+                        <div class="comment-header">
+                            <span class="reply-author">u/{{ reply.author }}</span>
+                            <span class="reply-meta">↑ {{ reply.ups }} | {{ reply.date }}</span>
+                        </div>
                         <div class="reply-body">{{ reply.body }}</div>
                     </div>
                     {% endfor %}
@@ -287,13 +349,12 @@ def generate_html(all_posts_info):
             </div>
             {% endfor %}
         </div>
-        {% endfor %}
     </body>
     </html>
     """
     template = Template(template_str)
     html = template.render(
-        all_posts=all_posts_info,
+        posts=posts,
         date=datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M")
     )
     return html
@@ -305,8 +366,9 @@ def main():
         print(f"Error obtaining token: {e}")
         return
 
-    all_posts_info = {}
-    
+    # List to store all posts from all subreddits
+    combined_posts = []
+
     for subreddit, post_limit in SUBREDDITS.items():
         try:
             posts = get_top_posts(token, subreddit=subreddit, limit=post_limit)
@@ -314,8 +376,6 @@ def main():
             print(f"Error fetching posts from r/{subreddit}: {e}")
             continue
 
-        posts_info = []
-        
         for p in posts:
             data = p['data']
             post_id = data['id']
@@ -327,6 +387,13 @@ def main():
             # Truncate selftext if too long
             selftext = data['selftext'][:500] + '...' if len(data['selftext']) > 500 else data['selftext']
             
+            # Convert post creation time to human-readable
+            created_utc = data.get('created_utc', None)
+            if created_utc:
+                post_date_str = datetime.datetime.utcfromtimestamp(created_utc).strftime("%Y-%m-%d %H:%M")
+            else:
+                post_date_str = "N/A"
+
             # Handle media content
             media_type = None
             media_url = None
@@ -345,14 +412,14 @@ def main():
                 hls_url = reddit_video.get('hls_url')
                 # fallback_url is usually video only, no audio
                 fallback_url = reddit_video.get('fallback_url')
-
                 # If no DASH or HLS, fallback to fallback_url
-                # This won't have audio, but at least shows the video.
                 media_url = dash_url or hls_url or fallback_url
 
             comments = get_top_comments(token, subreddit, post_id)
-            posts_info.append({
-                'post_id': post_id,  # Added post_id for unique identification
+            
+            combined_posts.append({
+                'subreddit': subreddit,
+                'post_id': post_id,
                 'title': title,
                 'author': author,
                 'url': url,
@@ -363,15 +430,21 @@ def main():
                 'dash_url': dash_url,
                 'hls_url': hls_url,
                 'ups': ups,
-                'num_comments': num_comments
+                'num_comments': num_comments,
+                'post_date': post_date_str,
             })
-        
-        all_posts_info[subreddit] = posts_info
 
-    html = generate_html(all_posts_info)
-    os.makedirs("docs", exist_ok=True)  # Ensure the 'docs' directory exists
+    # Shuffle all posts randomly (in-place)
+    random.shuffle(combined_posts)
+
+    # Generate HTML from the combined posts
+    html = generate_html(combined_posts)
+
+    # Ensure the 'docs' directory exists and write the index.html
+    os.makedirs("docs", exist_ok=True)
     with open("docs/index.html", "w", encoding="utf-8") as f:
         f.write(html)
+
     print("HTML file generated successfully at 'docs/index.html'.")
 
 if __name__ == "__main__":
