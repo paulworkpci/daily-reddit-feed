@@ -13,9 +13,15 @@ USER_AGENT = "DailyFeedScript/1.0"
 
 # Subreddit Configuration
 SUBREDDITS = {
-    'singularity': 20,  # subreddit name: number of posts
-    'ufos': 10,
-    'joerogan': 10,
+    'singularity': 8,  # subreddit name: number of posts
+    'ufos': 2,
+    'joerogan': 3,
+    'nosurf': 2,
+    'chatgpt': 2,
+    'productivity': 2,
+    'lifeprotips': 1,
+    'conspiracy': 2,
+    'askreddit': 1
     # Add more subreddits and their post limits here
 }
 
@@ -216,6 +222,7 @@ def generate_html(posts):
                 padding-bottom: 0.5rem;
                 border-bottom: 1px solid var(--border-color);
             }
+            /* Comments and replies */
             .comment {
                 margin: 1rem 0;
                 padding: 1rem;
@@ -244,6 +251,21 @@ def generate_html(posts):
                 border-left: 2px solid var(--accent-color);
                 background: var(--reply-bg);
                 border-radius: 4px;
+            }
+            /* Toggle Buttons */
+            .toggle-button {
+                background-color: var(--accent-color);
+                border: none;
+                color: var(--secondary-color);
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+                cursor: pointer;
+                margin-bottom: 0.75rem;
+                border-radius: 4px;
+            }
+            /* Collapsed class to hide elements by default */
+            .collapsed {
+                display: none;
             }
             @media (max-width: 600px) {
                 body {
@@ -304,7 +326,7 @@ def generate_html(posts):
                             var player = dashjs.MediaPlayer().create();
                             player.initialize(videoElement, dashUrl, true);
                         } else if (hlsUrl) {
-                            // Use hls.js if HLS url is available
+                            // Use hls.js if Hls url is available
                             if (Hls.isSupported()) {
                                 var hls = new Hls();
                                 hls.loadSource(hlsUrl);
@@ -326,29 +348,73 @@ def generate_html(posts):
                 
                 {% if post.comments %}
                 <h3 class="comment-section-title">Top Comments</h3>
-                {% for comment in post.comments %}
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="comment-author">u/{{ comment.author }}</span>
-                        <span class="comment-meta">↑ {{ comment.ups }} | {{ comment.date }}</span>
-                    </div>
-                    <div class="comment-body">{{ comment.body }}</div>
-                    
-                    {% for reply in comment.replies %}
-                    <div class="reply">
+                <!-- Button to toggle the entire comment section -->
+                <button class="toggle-button toggle-comment-section">Show Comments</button>
+                <div class="comments-wrapper collapsed">
+                    {% for comment in post.comments %}
+                    <div class="comment">
                         <div class="comment-header">
-                            <span class="reply-author">u/{{ reply.author }}</span>
-                            <span class="reply-meta">↑ {{ reply.ups }} | {{ reply.date }}</span>
+                            <span class="comment-author">u/{{ comment.author }}</span>
+                            <span class="comment-meta">↑ {{ comment.ups }} | {{ comment.date }}</span>
                         </div>
-                        <div class="reply-body">{{ reply.body }}</div>
+                        <div class="comment-body">{{ comment.body }}</div>
+                        
+                        {% if comment.replies %}
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            {% for reply in comment.replies %}
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/{{ reply.author }}</span>
+                                    <span class="reply-meta">↑ {{ reply.ups }} | {{ reply.date }}</span>
+                                </div>
+                                <div class="reply-body">{{ reply.body }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
-                {% endfor %}
                 {% endif %}
             </div>
             {% endfor %}
         </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Toggle entire comment sections
+                var commentSectionToggles = document.querySelectorAll(".toggle-comment-section");
+                commentSectionToggles.forEach(button => {
+                    button.addEventListener("click", function() {
+                        var commentSection = button.nextElementSibling;
+                        if (commentSection.classList.contains("collapsed")) {
+                            commentSection.classList.remove("collapsed");
+                            button.textContent = "Hide Comments";
+                        } else {
+                            commentSection.classList.add("collapsed");
+                            button.textContent = "Show Comments";
+                        }
+                    });
+                });
+
+                // Toggle replies within each comment
+                var repliesToggles = document.querySelectorAll(".toggle-replies");
+                repliesToggles.forEach(button => {
+                    button.addEventListener("click", function() {
+                        var repliesSection = button.nextElementSibling;
+                        if (repliesSection.classList.contains("collapsed")) {
+                            repliesSection.classList.remove("collapsed");
+                            button.textContent = "Hide Replies";
+                        } else {
+                            repliesSection.classList.add("collapsed");
+                            button.textContent = "Show Replies";
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
     </html>
     """
@@ -410,7 +476,7 @@ def main():
                 reddit_video = data.get('media', {}).get('reddit_video', {})
                 dash_url = reddit_video.get('dash_url')
                 hls_url = reddit_video.get('hls_url')
-                # fallback_url is usually video only, no audio
+                # fallback_url is usually video-only, no audio
                 fallback_url = reddit_video.get('fallback_url')
                 # If no DASH or HLS, fallback to fallback_url
                 media_url = dash_url or hls_url or fallback_url
