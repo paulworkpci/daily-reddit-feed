@@ -14,14 +14,14 @@ USER_AGENT = "DailyFeedScript/1.0"
 # Subreddit Configuration
 SUBREDDITS = {
     'singularity': 8,  # subreddit name: number of posts
-    'ufos': 2,
+    'chatgptcoding': 3,
     'joerogan': 3,
-    'nosurf': 2,
-    'chatgpt': 2,
-    'productivity': 2,
-    'lifeprotips': 1,
-    'conspiracy': 2,
-    'askreddit': 1
+    'chatgpt': 3,
+    'lifeprotips': 2,
+    'conspiracy': 1,
+    'crossfit': 1,
+    'meditation': 1,
+    'cars': 1
     # Add more subreddits and their post limits here
 }
 
