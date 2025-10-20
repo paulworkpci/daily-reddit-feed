@@ -167,40 +167,178 @@
     <body>
         <div class="container">
             <h1>Daily Top Reddit Posts</h1>
-            <p class="update-time">Updated on 2025-10-20 00:10 UTC</p>
+            <p class="update-time">Updated on 2025-10-20 00:14 UTC</p>
             
             
             <div class="post">
-                <div class="subreddit-name">r/chatgptcoding</div>
-                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPTCoding/comments/1oaf3ja/i_built_an_entire_mvp_for_an_lms_with_prompts/" target="_blank">I built an entire MVP for an LMS with prompts</a></div>
+                <div class="subreddit-name">r/chatgpt</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1oace2y/make_the_memes_dance/" target="_blank">Make the memes dance</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 3 | 0 comments</span>
-                    <span class="post-author">u/TheLazyIndianTechie</span>
-                    <span class="post-date">2025-10-19 03:09</span>
+                    <span class="post-stats">↑ 7840 | 267 comments</span>
+                    <span class="post-author">u/s1n0d3utscht3k</span>
+                    <span class="post-date">2025-10-19 00:49</span>
                 </div>
                 
                 
-                <div class="post-content">This has been a passion project of mine for a while. I wanted to build a learning management system where I could host my video game courses. It evolved from that to now become a common LMS tool that can be used for any type of course. I went through a few iterations and had to scrap multiple projects and repos. But I think I finally have a working MVP that looks simple, elegant and has the chance to grow into an actual product. 
+                
+                
+                <div class="media-container">
+                    <video id="video1oace2y" controls playsinline></video>
+                </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var dashUrl = "https://v.redd.it/ai03u3sguyvf1/DASHPlaylist.mpd?a=1763511268%2CMDFhNjA0NWI0OTA4M2Q2MWNjNmY3N2EyZTFiZTQ0MTMxMGIwMTE1MjUxYmI1ZjRjOTEwZWM5OTA3NjU5M2FlMw%3D%3D&amp;v=1&amp;f=sd";
+                        var hlsUrl = "https://v.redd.it/ai03u3sguyvf1/HLSPlaylist.m3u8?a=1763511268%2CYjMzZmI4Y2E3MzE1MjQyMDUwNzViMDQxMmM1MzRlNTcyN2QwZjk1NDE5NjIxYWJmOWEyMDEyZDMzYTZiM2ZkNQ%3D%3D&amp;v=1&amp;f=sd";
+                        var fallbackUrl = "https://v.redd.it/ai03u3sguyvf1/DASHPlaylist.mpd?a=1763511268%2CMDFhNjA0NWI0OTA4M2Q2MWNjNmY3N2EyZTFiZTQ0MTMxMGIwMTE1MjUxYmI1ZjRjOTEwZWM5OTA3NjU5M2FlMw%3D%3D&amp;v=1&amp;f=sd";
+                        var videoElement = document.querySelector("#video1oace2y");
 
-Ultimately, I found that the best combination of models and produ...</div>
+                        if (dashUrl) {
+                            // Use dash.js if DASH manifest is available
+                            var player = dashjs.MediaPlayer().create();
+                            player.initialize(videoElement, dashUrl, true);
+                        } else if (hlsUrl) {
+                            // Use hls.js if Hls url is available
+                            if (Hls.isSupported()) {
+                                var hls = new Hls();
+                                hls.loadSource(hlsUrl);
+                                hls.attachMedia(videoElement);
+                            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                                // Some browsers (Safari) may support HLS natively
+                                videoElement.src = hlsUrl;
+                            } else {
+                                // fallback no audio scenario
+                                videoElement.src = fallbackUrl;
+                            }
+                        } else {
+                            // fallback no audio scenario
+                            videoElement.src = fallbackUrl;
+                        }
+                    });
+                </script>
                 
                 
                 
-                
+                <h3 class="comment-section-title">Top Comments</h3>
+                <!-- Button to toggle the entire comment section -->
+                <button class="toggle-button toggle-comment-section">Show Comments</button>
+                <div class="comments-wrapper collapsed">
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/WithoutReason1729</span>
+                            <span class="comment-meta">↑ 1 | 2025-10-19 03:40</span>
+                        </div>
+                        <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://discord.gg/r-chatgpt-1050422060352024636)
+
+You've also been given a special flair for your contribution. We appreciate your post!
+
+*I am a bot and this action was performed automatically.*</div>
+                        
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/Carrera_996</span>
+                            <span class="comment-meta">↑ 790 | 2025-10-19 02:21</span>
+                        </div>
+                        <div class="comment-body">The fireman got me.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/lord_dude</span>
+                                    <span class="reply-meta">↑ 146 | 2025-10-19 10:24</span>
+                                </div>
+                                <div class="reply-body">Fuck this house, it's lost lmao</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Intraq</span>
+                                    <span class="reply-meta">↑ 36 | 2025-10-19 02:49</span>
+                                </div>
+                                <div class="reply-body">me too</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/MewCatYT</span>
+                                    <span class="reply-meta">↑ 14 | 2025-10-19 12:51</span>
+                                </div>
+                                <div class="reply-body">Wait—
+
+that's rare—
+
+ChatGPT's police officers didn't show up today and slapped that video out—</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/Willing-Chef-8348</span>
+                            <span class="comment-meta">↑ 757 | 2025-10-19 01:26</span>
+                        </div>
+                        <div class="comment-body">Best use of AI I’ve ever seen</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/temporarilyyours</span>
+                                    <span class="reply-meta">↑ 301 | 2025-10-19 04:25</span>
+                                </div>
+                                <div class="reply-body">What really impressed me was the baby dancing like a baby and the cat dancing like a cat.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/SpaceSick</span>
+                                    <span class="reply-meta">↑ 57 | 2025-10-19 02:52</span>
+                                </div>
+                                <div class="reply-body">So worth my power bill increasing 200%!!!</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/ArtFUBU</span>
+                                    <span class="reply-meta">↑ 46 | 2025-10-19 07:18</span>
+                                </div>
+                                <div class="reply-body">Actually really uncanny feeling. Felt really oddly normal. First AI video I've seen that I actually thought "this works completely" with little after thought</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
                 
             </div>
             
             <div class="post">
                 <div class="subreddit-name">r/chatgptcoding</div>
-                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPTCoding/comments/1oaj7ve/autocomplete/" target="_blank">Autocomplete</a></div>
+                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPTCoding/comments/1oar37k/copilot_cli_not_very_good/" target="_blank">Copilot CLI not very good...</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 5 | 2 comments</span>
-                    <span class="post-author">u/No-Neighborhood-7229</span>
-                    <span class="post-date">2025-10-19 07:11</span>
+                    <span class="post-stats">↑ 8 | 13 comments</span>
+                    <span class="post-author">u/ExtremeAcceptable289</span>
+                    <span class="post-date">2025-10-19 14:30</span>
                 </div>
                 
                 
-                <div class="post-content">What are the best alternatives to Cursor Autocomplete that can be installed in VS Code as a plugin? Preferably free, or ones that allow using my own API key (no subscription required).</div>
+                <div class="post-content">I have a CoPilot subscription and decided to try out copilot cli, previously I was hopping between claude code, codex and aider-ce with copilot-api which allows using copilot wit claude code. I'm still not sure exactly which one is the best but they're both far better than copilot cli bc copilot just sucks for many reasons:
+
+1. Rarely use mcps even when I *explicitly* tell it to do so like with 
+2. Doesnt work with free models like gpt 4.1, grok code fast, gpt 5 mini. Only supports sonnet, haiku...</div>
                 
                 
                 
@@ -213,25 +351,59 @@ Ultimately, I found that the best combination of models and produ...</div>
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">u/mr-claesson</span>
-                            <span class="comment-meta">↑ 3 | 2025-10-19 07:57</span>
+                            <span class="comment-author">u/FyreKZ</span>
+                            <span class="comment-meta">↑ 2 | 2025-10-19 14:41</span>
                         </div>
-                        <div class="comment-body">Co-pilot and Continue.dev comes to mind.</div>
+                        <div class="comment-body">Better just using Claude Code with Z.ai (what I personally use) or even a free CLI like Qwen or Gemini if you want CLI.</div>
                         
                         
                     </div>
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">u/popiazaza</span>
-                            <span class="comment-meta">↑ 4 | 2025-10-19 08:47</span>
+                            <span class="comment-author">u/SilverMarcs</span>
+                            <span class="comment-meta">↑ 2 | 2025-10-19 15:53</span>
                         </div>
-                        <div class="comment-body">[Windsurf has a free VS Code extension](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium), and it's pretty close to Cursor one.
-
-Best BYOK is Continue.dev, but it's not that amazing since there's not many option for API based auto complete model. Only consider it if you want to use a local model imo.
-
-Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto complete (you will also get agent requests).</div>
+                        <div class="comment-body">Does the copilot cli use the remotely indexed codebase? I feel the best copilot experience is still within vscode GUI. Besides, you may try OpenCode with its copilot integration</div>
                         
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/ExtremeAcceptable289</span>
+                                    <span class="reply-meta">↑ 2 | 2025-10-19 15:58</span>
+                                </div>
+                                <div class="reply-body">It uses indexing apparently as it says "x files indexed"</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/zenmatrix83</span>
+                            <span class="comment-meta">↑ 2 | 2025-10-19 16:06</span>
+                        </div>
+                        <div class="comment-body">for me its codex&gt;claude&gt;copilot&gt;doing it my self&gt;having my dog do it&gt;google. That said gemini 3.0 pro is supposed to be coming , and I hope its better as I've tried google cli and gemini through roo code and it never could edit files remotely well.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/porest</span>
+                                    <span class="reply-meta">↑ 1 | 2025-10-19 19:50</span>
+                                </div>
+                                <div class="reply-body">Have you used Copilot Cli with Claude models? If so, what do you feel are the major differences between using Claude vs using Copilot with Sonnet/Opus? I have never used Claude Code but I use Copilot Cli with Claude a lot and i think it's great (compared to Gemini Cli or Qwen Cli)!</div>
+                            </div>
+                            
+                        </div>
                         
                     </div>
                     
@@ -243,7 +415,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                 <div class="subreddit-name">r/joerogan</div>
                 <div class="post-title"><a href="https://www.reddit.com/r/JoeRogan/comments/1oanhwl/someone_from_trumps_office_had_to_specifically/" target="_blank">Someone from Trump’s office *had* to specifically create a prompt for American citizens getting covered in feces by POTUS…</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 438 | 225 comments</span>
+                    <span class="post-stats">↑ 439 | 225 comments</span>
                     <span class="post-author">u/FunJournalist88</span>
                     <span class="post-date">2025-10-19 11:41</span>
                 </div>
@@ -265,7 +437,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/moesteez</span>
-                            <span class="comment-meta">↑ 288 | 2025-10-19 11:46</span>
+                            <span class="comment-meta">↑ 292 | 2025-10-19 11:46</span>
                         </div>
                         <div class="comment-body">….but Hillary said deplorables.</div>
                         
@@ -277,7 +449,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/applefilla</span>
-                                    <span class="reply-meta">↑ 61 | 2025-10-19 11:48</span>
+                                    <span class="reply-meta">↑ 60 | 2025-10-19 11:48</span>
                                 </div>
                                 <div class="reply-body">Don't forget spaghetti strap Mike</div>
                             </div>
@@ -285,7 +457,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/HammerAndSickleBot</span>
-                                    <span class="reply-meta">↑ 57 | 2025-10-19 12:39</span>
+                                    <span class="reply-meta">↑ 58 | 2025-10-19 12:39</span>
                                 </div>
                                 <div class="reply-body">And Kamala had a weird laugh. Nothing we could do guys.</div>
                             </div>
@@ -293,7 +465,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/Ya_No</span>
-                                    <span class="reply-meta">↑ 17 | 2025-10-19 14:31</span>
+                                    <span class="reply-meta">↑ 16 | 2025-10-19 14:31</span>
                                 </div>
                                 <div class="reply-body">And Biden had red lights behind him</div>
                             </div>
@@ -305,7 +477,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/Pathelzazar</span>
-                            <span class="comment-meta">↑ 179 | 2025-10-19 12:34</span>
+                            <span class="comment-meta">↑ 176 | 2025-10-19 12:34</span>
                         </div>
                         <div class="comment-body">I’m not really on either side politically but being active duty seeing the shit that’s posted by official government accounts and the president today if I posted it would get me booted from the military 100%.</div>
                         
@@ -317,7 +489,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/SpaceBandit13</span>
-                                    <span class="reply-meta">↑ 96 | 2025-10-19 13:54</span>
+                                    <span class="reply-meta">↑ 101 | 2025-10-19 13:54</span>
                                 </div>
                                 <div class="reply-body">Can you imagine if literally any other president posted a video of themselves shitting on the American people?</div>
                             </div>
@@ -325,7 +497,7 @@ Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto comp
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/Reddit-Bot-61852023</span>
-                                    <span class="reply-meta">↑ 22 | 2025-10-19 14:36</span>
+                                    <span class="reply-meta">↑ 24 | 2025-10-19 14:36</span>
                                 </div>
                                 <div class="reply-body">&gt; I’m not really on either side politically
 
@@ -348,7 +520,7 @@ Then no one should care about your opinion.</div>
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/GeorgeMalarkey</span>
-                            <span class="comment-meta">↑ 174 | 2025-10-19 11:57</span>
+                            <span class="comment-meta">↑ 180 | 2025-10-19 11:57</span>
                         </div>
                         <div class="comment-body">Duuude but its so funny. Dems dont understand humor. If you could hang in the green room, you would understand the nuance of poo poo and kaka.</div>
                         
@@ -360,7 +532,7 @@ Then no one should care about your opinion.</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/FunJournalist88</span>
-                                    <span class="reply-meta">↑ 91 | 2025-10-19 12:29</span>
+                                    <span class="reply-meta">↑ 94 | 2025-10-19 12:29</span>
                                 </div>
                                 <div class="reply-body">https://preview.redd.it/hshs44z5b2wf1.jpeg?width=2000&amp;format=pjpg&amp;auto=webp&amp;s=14159ad6cec07629e802f1292a1ab44a68b51eee
 
@@ -376,10 +548,137 @@ remember to make comedy legal again</div>
             </div>
             
             <div class="post">
+                <div class="subreddit-name">r/conspiracy</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/conspiracy/comments/1oacpgg/just_looked_at_some_houses_regular_young_people/" target="_blank">Just looked at some houses. Regular young people in the USA are screwed.</a></div>
+                <div class="post-meta">
+                    <span class="post-stats">↑ 1343 | 255 comments</span>
+                    <span class="post-author">u/ImOnTheBus</span>
+                    <span class="post-date">2025-10-19 01:05</span>
+                </div>
+                
+                
+                <div class="post-content">Not sure if most appropriate subreddit, but it goes with making us debt slaves, modern feudalism etc... plus I'm banned from most of reddit for disparaging big pharma a few years ago. 
+
+
+
+Wife and I bought a house ~14 years ago, in our mid 20s. It's fine, kinda small but in good order, I still like it, and it's secluded and has a nice yard. It was ~$135k and the interest rate was ~half of what it is now and we paid it faster than necessary. Could have borrowed more, but I'm pretty frugal and don...</div>
+                
+                
+                
+                
+                
+                <h3 class="comment-section-title">Top Comments</h3>
+                <!-- Button to toggle the entire comment section -->
+                <button class="toggle-button toggle-comment-section">Show Comments</button>
+                <div class="comments-wrapper collapsed">
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/AutoModerator</span>
+                            <span class="comment-meta">↑ 1 | 2025-10-19 01:05</span>
+                        </div>
+                        <div class="comment-body">###[Meta] Sticky Comment
+
+[Rule 2](https://www.reddit.com/r/conspiracy/wiki/faq#wiki_2_-_address_the_argument.3B_not_the_user.2C_the_mods.2C_or_the_sub.) ***does not apply*** when replying to this stickied comment.  
+
+[Rule 2](https://www.reddit.com/r/conspiracy/wiki/faq#wiki_2_-_address_the_argument.3B_not_the_user.2C_the_mods.2C_or_the_sub.) ***does apply*** throughout the rest of this thread.
+
+*What this means*: Please keep any "meta" discussion directed at specific users, mods, or /r/conspiracy in general in this comment chain ***only.***
+
+*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/conspiracy) if you have any questions or concerns.*</div>
+                        
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/jtbic</span>
+                            <span class="comment-meta">↑ 466 | 2025-10-19 01:25</span>
+                        </div>
+                        <div class="comment-body">you are welcome here.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Irishnghtmare</span>
+                                    <span class="reply-meta">↑ 59 | 2025-10-19 08:10</span>
+                                </div>
+                                <div class="reply-body">I would categorize it as a conspiracy. It isn't unlawful because our law are written to favor the banks, but it can definitely be considered harmful and predatory to the consumer who could be enriching their own lives instead of paying the exhorbitant fees and interest collected by the banks.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/rustyrussell2015</span>
+                            <span class="comment-meta">↑ 174 | 2025-10-19 02:10</span>
+                        </div>
+                        <div class="comment-body">That's what happens when corporations start buying up all the housing.
+
+Over the past few years I have been incessantly spammed with phone calls trying to get me to sell my house. I paid it off 5 years ago and it's so annoying to get constantly harassed.
+
+So yeah even though my house value is up by 50% (thanks to this artificial demand by corporations like blackrock, etc) I get to now enjoy paying those inflated property taxes every year.
+
+You can't win even as a homeowner.
+
+So yeah I get it, younger generations are currently priced out of home buying but homeowners are getting fleeced with inflated taxes not to mention inflated cost of repairs and replacements.
+
+Case in point, 8 years ago I paid $6k for a AC/Furnace replacement.
+
+Now it costs $11k for the same capacity system.
+
+Roof repairs are absurd too.
+
+So yeah apartment dwelling means no equity but at least you don't have to deal with repairs and replacements for a home on top of a mortgage if you have one.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/hoffbaby29</span>
+                                    <span class="reply-meta">↑ 67 | 2025-10-19 03:34</span>
+                                </div>
+                                <div class="reply-body">Lots of non-US corporations are buying up housing as well… like why? They’re not even from here lol</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/AAjax</span>
+                                    <span class="reply-meta">↑ 10 | 2025-10-19 04:06</span>
+                                </div>
+                                <div class="reply-body">I too own my house, I get spammed all the time via phone and email.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/sunshine-x</span>
+                                    <span class="reply-meta">↑ 7 | 2025-10-19 06:31</span>
+                                </div>
+                                <div class="reply-body">That and airbnb.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="post">
                 <div class="subreddit-name">r/joerogan</div>
                 <div class="post-title"><a href="https://www.reddit.com/r/JoeRogan/comments/1oagizu/president_of_the_united_states_posts_an_ai_video/" target="_blank">President of The United States posts an AI video of him wearing a crown, flying a jet and dropping sewage on protestors</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 2998 | 844 comments</span>
+                    <span class="post-stats">↑ 3000 | 846 comments</span>
                     <span class="post-author">u/Filmosound385</span>
                     <span class="post-date">2025-10-19 04:29</span>
                 </div>
@@ -392,9 +691,9 @@ remember to make comedy legal again</div>
                 </div>
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                        var dashUrl = "https://v.redd.it/d1yxe0wjxzvf1/DASHPlaylist.mpd?a=1763510996%2CMjAwMWJmYTIwZTI0ODNhZmVlMjBmODY1MzM0ODllZGU2M2JiNmQ0YzVmMWFkYmQ4Y2Y3N2E2NDc1MjM5YTc0YQ%3D%3D&amp;v=1&amp;f=sd";
-                        var hlsUrl = "https://v.redd.it/d1yxe0wjxzvf1/HLSPlaylist.m3u8?a=1763510996%2CMmE3NzQ2M2U0NjFlOTdkMTk3ZWE5ZmY1OWU2YWE0MjNkODZhOGMyY2I4Y2ZlOTczMDhhNjMwMDdmNWQ0YjViZQ%3D%3D&amp;v=1&amp;f=sd";
-                        var fallbackUrl = "https://v.redd.it/d1yxe0wjxzvf1/DASHPlaylist.mpd?a=1763510996%2CMjAwMWJmYTIwZTI0ODNhZmVlMjBmODY1MzM0ODllZGU2M2JiNmQ0YzVmMWFkYmQ4Y2Y3N2E2NDc1MjM5YTc0YQ%3D%3D&amp;v=1&amp;f=sd";
+                        var dashUrl = "https://v.redd.it/d1yxe0wjxzvf1/DASHPlaylist.mpd?a=1763511264%2COTliOWY3ODIzZWRhZGE2MDQwY2NiNTQ5ZDliZjk4OTBjMjBlYzM3NzU0MGMwMWI0YzM3YTdmM2EwOGJlMDJmZQ%3D%3D&amp;v=1&amp;f=sd";
+                        var hlsUrl = "https://v.redd.it/d1yxe0wjxzvf1/HLSPlaylist.m3u8?a=1763511264%2CM2RhMTNiNzBmNGU5ZjVhNzAwY2QzYjAyYjRiOGRhNzZlODkzNWJlNTI1MmQwNGY3ZjJjN2NmYjU4NGY5ZDY0OQ%3D%3D&amp;v=1&amp;f=sd";
+                        var fallbackUrl = "https://v.redd.it/d1yxe0wjxzvf1/DASHPlaylist.mpd?a=1763511264%2COTliOWY3ODIzZWRhZGE2MDQwY2NiNTQ5ZDliZjk4OTBjMjBlYzM3NzU0MGMwMWI0YzM3YTdmM2EwOGJlMDJmZQ%3D%3D&amp;v=1&amp;f=sd";
                         var videoElement = document.querySelector("#video1oagizu");
 
                         if (dashUrl) {
@@ -431,7 +730,7 @@ remember to make comedy legal again</div>
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/Cruzifixio</span>
-                            <span class="comment-meta">↑ 1987 | 2025-10-19 04:33</span>
+                            <span class="comment-meta">↑ 1989 | 2025-10-19 04:33</span>
                         </div>
                         <div class="comment-body">Trump shitting on americans is very appropiate.</div>
                         
@@ -443,7 +742,7 @@ remember to make comedy legal again</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/cure4boneitis</span>
-                                    <span class="reply-meta">↑ 259 | 2025-10-19 06:22</span>
+                                    <span class="reply-meta">↑ 257 | 2025-10-19 06:22</span>
                                 </div>
                                 <div class="reply-body">the Burger King</div>
                             </div>
@@ -451,7 +750,7 @@ remember to make comedy legal again</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/jr355542</span>
-                                    <span class="reply-meta">↑ 11 | 2025-10-19 10:55</span>
+                                    <span class="reply-meta">↑ 12 | 2025-10-19 10:55</span>
                                 </div>
                                 <div class="reply-body">Release the Depends!</div>
                             </div>
@@ -471,7 +770,7 @@ remember to make comedy legal again</div>
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/TROUT1986</span>
-                            <span class="comment-meta">↑ 1249 | 2025-10-19 04:32</span>
+                            <span class="comment-meta">↑ 1244 | 2025-10-19 04:32</span>
                         </div>
                         <div class="comment-body">Idiocracy was a premonition</div>
                         
@@ -483,7 +782,7 @@ remember to make comedy legal again</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/adrockmcaandmemiked</span>
-                                    <span class="reply-meta">↑ 276 | 2025-10-19 04:33</span>
+                                    <span class="reply-meta">↑ 275 | 2025-10-19 04:33</span>
                                 </div>
                                 <div class="reply-body">It wasn’t ridiculous enough</div>
                             </div>
@@ -491,7 +790,7 @@ remember to make comedy legal again</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/Olley2994</span>
-                                    <span class="reply-meta">↑ 117 | 2025-10-19 04:35</span>
+                                    <span class="reply-meta">↑ 114 | 2025-10-19 04:35</span>
                                 </div>
                                 <div class="reply-body">https://i.redd.it/kjyac8xoyzvf1.gif</div>
                             </div>
@@ -499,7 +798,7 @@ remember to make comedy legal again</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/meshreplacer</span>
-                                    <span class="reply-meta">↑ 105 | 2025-10-19 04:39</span>
+                                    <span class="reply-meta">↑ 104 | 2025-10-19 04:39</span>
                                 </div>
                                 <div class="reply-body">Idiocracy was a Sequel. We are living the Prequel.</div>
                             </div>
@@ -511,7 +810,7 @@ remember to make comedy legal again</div>
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/Good_Statement2681</span>
-                            <span class="comment-meta">↑ 708 | 2025-10-19 04:34</span>
+                            <span class="comment-meta">↑ 705 | 2025-10-19 04:34</span>
                         </div>
                         <div class="comment-body">This shit is so embarrassing….I just want an adult in the WH, is that so much to ask…</div>
                         
@@ -523,7 +822,7 @@ remember to make comedy legal again</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/1290SDR</span>
-                                    <span class="reply-meta">↑ 259 | 2025-10-19 04:37</span>
+                                    <span class="reply-meta">↑ 262 | 2025-10-19 04:37</span>
                                 </div>
                                 <div class="reply-body">&gt;I just want an adult in the WH, is that so much to ask…
 
@@ -533,7 +832,7 @@ The best we can do for you is UFC at the WH.</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/Turbulent_Rooster945</span>
-                                    <span class="reply-meta">↑ 36 | 2025-10-19 10:40</span>
+                                    <span class="reply-meta">↑ 38 | 2025-10-19 10:40</span>
                                 </div>
                                 <div class="reply-body">There are adults there, fast forwarding Project 2025 while the figurehead-President gets spoon fed AI slop.</div>
                             </div>
@@ -541,9 +840,532 @@ The best we can do for you is UFC at the WH.</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/moon_cake123</span>
-                                    <span class="reply-meta">↑ 24 | 2025-10-19 08:39</span>
+                                    <span class="reply-meta">↑ 23 | 2025-10-19 08:39</span>
                                 </div>
                                 <div class="reply-body">Thank fuk this dude is near the end of his life. Imagine if he got in at 50 or 60</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="post">
+                <div class="subreddit-name">r/chatgpt</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1oapand/mr_rogers_and_the_french_revolution/" target="_blank">Mr. Rogers and the French Revolution</a></div>
+                <div class="post-meta">
+                    <span class="post-stats">↑ 1047 | 91 comments</span>
+                    <span class="post-author">u/GormtheOld25</span>
+                    <span class="post-date">2025-10-19 13:11</span>
+                </div>
+                
+                
+                <div class="post-content">Made using Sora-2!</div>
+                
+                
+                
+                <div class="media-container">
+                    <video id="video1oapand" controls playsinline></video>
+                </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var dashUrl = "https://v.redd.it/t6r8qrrsi2wf1/DASHPlaylist.mpd?a=1763511268%2CNzdkNGM4M2I4ZTY4OTBmOWQ0MWI4OTkxZmIwZDZhNTE1ZjI2OWEyOWU4Y2FjNTA4YzBkMTcxOThjZTlhYTE4Yg%3D%3D&amp;v=1&amp;f=sd";
+                        var hlsUrl = "https://v.redd.it/t6r8qrrsi2wf1/HLSPlaylist.m3u8?a=1763511268%2CYzBiNGM5Yjk0ZDc1NWJmODZhZWM3NmMzNjUyNTY5MzVkM2U4ZDVkOGIwY2IzNTQyOGFhNzVmYzVmODM4ODUyNA%3D%3D&amp;v=1&amp;f=sd";
+                        var fallbackUrl = "https://v.redd.it/t6r8qrrsi2wf1/DASHPlaylist.mpd?a=1763511268%2CNzdkNGM4M2I4ZTY4OTBmOWQ0MWI4OTkxZmIwZDZhNTE1ZjI2OWEyOWU4Y2FjNTA4YzBkMTcxOThjZTlhYTE4Yg%3D%3D&amp;v=1&amp;f=sd";
+                        var videoElement = document.querySelector("#video1oapand");
+
+                        if (dashUrl) {
+                            // Use dash.js if DASH manifest is available
+                            var player = dashjs.MediaPlayer().create();
+                            player.initialize(videoElement, dashUrl, true);
+                        } else if (hlsUrl) {
+                            // Use hls.js if Hls url is available
+                            if (Hls.isSupported()) {
+                                var hls = new Hls();
+                                hls.loadSource(hlsUrl);
+                                hls.attachMedia(videoElement);
+                            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                                // Some browsers (Safari) may support HLS natively
+                                videoElement.src = hlsUrl;
+                            } else {
+                                // fallback no audio scenario
+                                videoElement.src = fallbackUrl;
+                            }
+                        } else {
+                            // fallback no audio scenario
+                            videoElement.src = fallbackUrl;
+                        }
+                    });
+                </script>
+                
+                
+                
+                <h3 class="comment-section-title">Top Comments</h3>
+                <!-- Button to toggle the entire comment section -->
+                <button class="toggle-button toggle-comment-section">Show Comments</button>
+                <div class="comments-wrapper collapsed">
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/WithoutReason1729</span>
+                            <span class="comment-meta">↑ 1 | 2025-10-19 16:10</span>
+                        </div>
+                        <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://discord.gg/r-chatgpt-1050422060352024636)
+
+You've also been given a special flair for your contribution. We appreciate your post!
+
+*I am a bot and this action was performed automatically.*</div>
+                        
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/Longjumping-Tip1188</span>
+                            <span class="comment-meta">↑ 59 | 2025-10-19 14:40</span>
+                        </div>
+                        <div class="comment-body">That's awesome. If you had to guess, how many prompts do you throw out for each clip? And how long of a prompt do you make? 
+
+It's crazy to me that you do this with just chat gpt. I feel like if get such trash outputs.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/GormtheOld25</span>
+                                    <span class="reply-meta">↑ 70 | 2025-10-19 14:56</span>
+                                </div>
+                                <div class="reply-body">Oh my god, SO many. I've been making AI videos since the very beginning- and people don't realize how much of an artform it is to learn how to prompt the models to get what you want, and how much trial and error there is. I probably use only 1 in 10 clips. I had to pay 200 for the pro version so I can generate 100 per day, without that this would not be possible in a reasonable amount of time.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/Peg-Lemac</span>
+                            <span class="comment-meta">↑ 28 | 2025-10-19 15:28</span>
+                        </div>
+                        <div class="comment-body">This is my favorite, by far, of all the AI videos I’ve seen. It looks like a lot of work, but it’s just fantastic.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/GormtheOld25</span>
+                                    <span class="reply-meta">↑ 13 | 2025-10-19 15:31</span>
+                                </div>
+                                <div class="reply-body">Thank you! Its great to hear that</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="post">
+                <div class="subreddit-name">r/joerogan</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/JoeRogan/comments/1oaq2s6/the_denial_is_hitting_hard/" target="_blank">The denial is hitting hard.</a></div>
+                <div class="post-meta">
+                    <span class="post-stats">↑ 1319 | 752 comments</span>
+                    <span class="post-author">u/KingLouis2016</span>
+                    <span class="post-date">2025-10-19 13:47</span>
+                </div>
+                
+                
+                
+                
+                <div class="media-container">
+                    <img src="https://i.redd.it/e4mvxkcxezvf1.jpeg" alt="Post image" loading="lazy">
+                </div>
+                
+                
+                
+                <h3 class="comment-section-title">Top Comments</h3>
+                <!-- Button to toggle the entire comment section -->
+                <button class="toggle-button toggle-comment-section">Show Comments</button>
+                <div class="comments-wrapper collapsed">
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/I_Dont_Work_Here_Lad</span>
+                            <span class="comment-meta">↑ 224 | 2025-10-19 14:31</span>
+                        </div>
+                        <div class="comment-body">As if anyone needs to be paid to hate Trump 🤦🏻‍♂️
+
+He has led a life of being a piece of shit. You don’t need to pay anyone to hate that fat sack of shit.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Chippopotanuse</span>
+                                    <span class="reply-meta">↑ 51 | 2025-10-19 16:40</span>
+                                </div>
+                                <div class="reply-body">What makes me really sad is that you also don’t need to pay 70 million people to ABSOLUTELY LOVE AND WORSHIP that sack of shit. 
+
+Far too much of our country is mentally insane and dumb.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Sandgrease</span>
+                                    <span class="reply-meta">↑ 14 | 2025-10-19 21:49</span>
+                                </div>
+                                <div class="reply-body">I hated him 30 years ago, I feel like I deserve a check at this point.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Uriel_The_Destroyer</span>
+                                    <span class="reply-meta">↑ 5 | 2025-10-19 15:54</span>
+                                </div>
+                                <div class="reply-body">Well said.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/The_Librarian_841</span>
+                            <span class="comment-meta">↑ 221 | 2025-10-19 14:15</span>
+                        </div>
+                        <div class="comment-body">Musk literally paid people to vote for Trump. The Soros meme died that day. MAGA is and has always been the deep state.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/mcfeeli</span>
+                                    <span class="reply-meta">↑ 53 | 2025-10-19 15:25</span>
+                                </div>
+                                <div class="reply-body">When ever Trump and the right accuses the left of something 100% they are guilty of doing it.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/stackered</span>
+                                    <span class="reply-meta">↑ 33 | 2025-10-19 14:56</span>
+                                </div>
+                                <div class="reply-body">they stole the election too, with vote switching/adding in votes during the counting process via Starlink.  Elon/Elon's son AND Trump slipped up and admitted it live on TV a few times.  Now, they've bought Dominion voting systems.  
+
+Basically, without cheating/stealing or Russian interference the GOP hasn't won a real election in the presidency since the 1980's outside of Bush Jr.'s 2nd term (he stole the first with Jeb recount). 
+
+Its actually insane how much the GOP is the deep state, hence why they use the term so much (always projection).</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Rhythm_Flunky</span>
+                                    <span class="reply-meta">↑ 4 | 2025-10-19 15:58</span>
+                                </div>
+                                <div class="reply-body">Christian Nationalist have always been the greatest threat to our Republic. Anybody claiming anything else is a degenerate and a traitor.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/NdamukongSuhDude</span>
+                            <span class="comment-meta">↑ 110 | 2025-10-19 14:19</span>
+                        </div>
+                        <div class="comment-body">Republicans are in such denial. They really believe Soros is signing a check to individual protesters? These people are complete idiots.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/jpk195</span>
+                                    <span class="reply-meta">↑ 49 | 2025-10-19 14:25</span>
+                                </div>
+                                <div class="reply-body">They aren't idiots.
+
+They just conveniently lose the ability to smell bullshit anytime it's their team's bullshit.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/bionicjoe</span>
+                                    <span class="reply-meta">↑ 8 | 2025-10-19 17:12</span>
+                                </div>
+                                <div class="reply-body">I went to a protest years ago in my small town of 6000 people in Kentucky. 
+
+Some old dude came up to me and asked if I was paid by Soros.   
+People believe anything that comes out of the idiot rectangles.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Embarrassed-Top6449</span>
+                                    <span class="reply-meta">↑ 2 | 2025-10-19 15:46</span>
+                                </div>
+                                <div class="reply-body">No one thinks that he signs checks to individual protesters. He funds groups that organize and yes often pay for protests.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="post">
+                <div class="subreddit-name">r/meditation</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/Meditation/comments/1oaz44c/people_who_built_a_consistent_meditation_habit/" target="_blank">People who built a consistent meditation habit - how did you build it up and where are you now?</a></div>
+                <div class="post-meta">
+                    <span class="post-stats">↑ 23 | 30 comments</span>
+                    <span class="post-author">u/PumpkinPines</span>
+                    <span class="post-date">2025-10-19 19:46</span>
+                </div>
+                
+                
+                <div class="post-content">I am wondering about the process that worked for you. 
+
+Did you start with 5 minutes and then added 5 minutes every day? Or did you immediately start with 20 minutes? Or something else entirely?
+
+Were you consistent about the specific time of the day from the start?
+
+I am also wondering where are you now in your journey.</div>
+                
+                
+                
+                
+                
+                <h3 class="comment-section-title">Top Comments</h3>
+                <!-- Button to toggle the entire comment section -->
+                <button class="toggle-button toggle-comment-section">Show Comments</button>
+                <div class="comments-wrapper collapsed">
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/NoRelation2122</span>
+                            <span class="comment-meta">↑ 48 | 2025-10-19 20:23</span>
+                        </div>
+                        <div class="comment-body">I started with a hilariously low bar.
+
+Literally two minutes right after my morning coffee, figuring if I couldn't manage 120 seconds of sitting still, I had bigger problems than meditation could fix.
+
+The "secret sauce "wasn't adding time consistently (some days I'd do 5 minutes, others 20, depending on how much my brain was doing its anxious hamster-wheel thing), but making it non-negotiable by tying it to something I already did every single day.
+
+Now I'm about 10 years in, sitting for 15-20 minutes most mornings, and the biggest shift isn't that I'm some zen master. It's that I can actually catch myself spiraling into catastrophic thinking and hit pause before I ruin my whole day over something that hasn't even happened yet.</div>
+                        
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/Long-Lost-Lum</span>
+                            <span class="comment-meta">↑ 16 | 2025-10-19 19:55</span>
+                        </div>
+                        <div class="comment-body">For me, I started with guided meditation as that gave me a tangible process to follow and learn from, and I set a goal of 10 minutes per day. Which I stuck to but have completed sessions of 5 minutes or less dependant on the days avalibility. For me, I always aimed to practice once a day, even for less time, as I believe the best way to form a habit is consistency.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/NoRelation2122</span>
+                                    <span class="reply-meta">↑ 4 | 2025-10-19 20:23</span>
+                                </div>
+                                <div class="reply-body">10 minute works amazingly for a start, and I agree with your approach of sometimes doing just 5 because that's what we have time for. Some meditation is always better than no meditation.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/Zimgar</span>
+                            <span class="comment-meta">↑ 9 | 2025-10-19 20:15</span>
+                        </div>
+                        <div class="comment-body">Here is a short summary of my first 5 years meditating. (Think I’m around 7 years total?)
+
+Time of meditation has never been consistent for me, have a family that makes that hard.  
+
+Started 10 mins a day with headspace.  Took a bit to get consistent and comfortable with it.  Started reading books about meditation and some Buddhism.  Was enjoyable but also incredibly confusing.
+
+Consumed all of headspace, occasionally did longer meditation sessions on a weekend or so for 20-30mins.  Did the Waking Up App, switched to that full time.
+
+1-2 years in… Noticed some strange changes.  Could no longer be tickled unless I wanted to?  Could now feel my awareness at different portions of my body.  Body scanning now made sense.
+
+Could feel my brain and other parts relax in ways I couldn’t before.  Started doing walking meditations with my dog.  Started seeing more common visuals or what they call siddhis while meditating.  Started meditating 20mins a day. Drops in overall anxiety, fear, and anger.
+
+Started to meditate more without my
+noise cancelling earbuds.
+
+Year 3? Life stuff happened, motivation to meditate went down and when I tried it was hard.  Very antsy, couldn’t get comfortable, complained about posture etc.  was less consistent even when going down to 10 minutes.
+
+Year 4, more consistent again, more books during off-time.  Back to 20 minutes daily, occasionally long sessions of 1-2 hours(every couple of months.  
+
+Year 5.  Still meditating consistently but now meditate while doing hot yoga as well.  Started meditating with Kasina in addition to normal breath meditation.  Also progress more into insight meditation while breath meditation.  Several changes in what and how I notice the breath.  Glimpses of jhanas 3-4.
+More drops in fear, anxiety and anger.
+
+Start looking into meditation retreats.  Lots of different books read, all that make me feel more at ease and more as though I’m on the right path.
+
+Anyways hope this is helpful?</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/bellonium</span>
+                                    <span class="reply-meta">↑ 1 | 2025-10-19 23:35</span>
+                                </div>
+                                <div class="reply-body">Wow, this is near my same story but over the last 10yrs and I started with the 10% happier app.  
+
+Thank you for sharing</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="post">
+                <div class="subreddit-name">r/chatgpt</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPT/comments/1oalwi2/asking_gpt_to_generate_the_steps_of_cooking_an/" target="_blank">Asking GPT to generate the steps of cooking an egg, 10 months later</a></div>
+                <div class="post-meta">
+                    <span class="post-stats">↑ 1597 | 185 comments</span>
+                    <span class="post-author">u/random_user_and_name</span>
+                    <span class="post-date">2025-10-19 10:05</span>
+                </div>
+                
+                
+                
+                
+                
+                
+                <h3 class="comment-section-title">Top Comments</h3>
+                <!-- Button to toggle the entire comment section -->
+                <button class="toggle-button toggle-comment-section">Show Comments</button>
+                <div class="comments-wrapper collapsed">
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/WithoutReason1729</span>
+                            <span class="comment-meta">↑ 1 | 2025-10-19 14:05</span>
+                        </div>
+                        <div class="comment-body">Your post is getting popular and we just featured it on our Discord! [Come check it out!](https://discord.gg/r-chatgpt-1050422060352024636)
+
+You've also been given a special flair for your contribution. We appreciate your post!
+
+*I am a bot and this action was performed automatically.*</div>
+                        
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/Individual_Tower_638</span>
+                            <span class="comment-meta">↑ 871 | 2025-10-19 10:24</span>
+                        </div>
+                        <div class="comment-body">Step 4: Egg</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/xorthematrix</span>
+                                    <span class="reply-meta">↑ 240 | 2025-10-19 10:45</span>
+                                </div>
+                                <div class="reply-body">Pouk egg</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/DeezNutsKEKW</span>
+                                    <span class="reply-meta">↑ 8 | 2025-10-19 14:10</span>
+                                </div>
+                                <div class="reply-body">Step 5•</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/TertlFace</span>
+                                    <span class="reply-meta">↑ 6 | 2025-10-19 18:10</span>
+                                </div>
+                                <div class="reply-body">Surprisingly complicated to pull off.</div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/thrownededawayed</span>
+                            <span class="comment-meta">↑ 465 | 2025-10-19 10:13</span>
+                        </div>
+                        <div class="comment-body">I'm going to miss jank ass "will smith eating spaghetti" AI art once it gets too good. It was a genre all on it's own, maybe even the first novel genre created entirely by AI even if unintentionally.</div>
+                        
+                        
+                        <!-- Button to toggle replies for this comment -->
+                        <button class="toggle-button toggle-replies">Show Replies</button>
+                        <div class="replies collapsed">
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/random_user_and_name</span>
+                                    <span class="reply-meta">↑ 95 | 2025-10-19 10:13</span>
+                                </div>
+                                <div class="reply-body">it's like a benchmark for AI we do once a while to test it</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/JGuillou</span>
+                                    <span class="reply-meta">↑ 24 | 2025-10-19 16:17</span>
+                                </div>
+                                <div class="reply-body">https://preview.redd.it/27ay6thxf3wf1.jpeg?width=1024&amp;format=pjpg&amp;auto=webp&amp;s=3bcf82de0692aaebbd00afbfe41c05dd5b6264db
+
+I tried to get it to pretend to be a bad AI - good job, but hands that realistic doesn’t fool anyone.</div>
+                            </div>
+                            
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <span class="reply-author">u/Windydanna</span>
+                                    <span class="reply-meta">↑ 12 | 2025-10-19 12:06</span>
+                                </div>
+                                <div class="reply-body">"Harry came across Ron doing a frenzied tap dance, but once he saw Harry, he started eating Hermione's family."</div>
                             </div>
                             
                         </div>
@@ -558,7 +1380,7 @@ The best we can do for you is UFC at the WH.</div>
                 <div class="subreddit-name">r/crossfit</div>
                 <div class="post-title"><a href="https://www.reddit.com/r/crossfit/comments/1oaolnv/after_being_stuck_in_depression_because_i_could/" target="_blank">After being stuck in depression because I could run anymore I discovered the Assault Bike. From vaping to this in 5 weeks.</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 90 | 24 comments</span>
+                    <span class="post-stats">↑ 91 | 24 comments</span>
                     <span class="post-author">u/itsgermanphil</span>
                     <span class="post-date">2025-10-19 12:39</span>
                 </div>
@@ -584,7 +1406,7 @@ My new goal is to beat the world record of 35km in 60 minute...</div>
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/Ynneb82</span>
-                            <span class="comment-meta">↑ 12 | 2025-10-19 12:50</span>
+                            <span class="comment-meta">↑ 11 | 2025-10-19 12:50</span>
                         </div>
                         <div class="comment-body">Woah, good job. I did 100 cal in 10 minutes this week :(</div>
                         
@@ -596,7 +1418,7 @@ My new goal is to beat the world record of 35km in 60 minute...</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/ribbit100</span>
-                                    <span class="reply-meta">↑ 8 | 2025-10-19 13:26</span>
+                                    <span class="reply-meta">↑ 7 | 2025-10-19 13:26</span>
                                 </div>
                                 <div class="reply-body">And that’s still badass</div>
                             </div>
@@ -658,22 +1480,25 @@ My new goal is to beat the world record of 35km in 60 minute...</div>
             </div>
             
             <div class="post">
-                <div class="subreddit-name">r/meditation</div>
-                <div class="post-title"><a href="https://www.reddit.com/r/Meditation/comments/1oaz44c/people_who_built_a_consistent_meditation_habit/" target="_blank">People who built a consistent meditation habit - how did you build it up and where are you now?</a></div>
+                <div class="subreddit-name">r/chatgptcoding</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPTCoding/comments/1oawtoj/built_my_own_mcp_server_for_my_app_and_was/" target="_blank">Built my own MCP server for my app and was pleasantly shocked by how good it is</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 23 | 30 comments</span>
-                    <span class="post-author">u/PumpkinPines</span>
-                    <span class="post-date">2025-10-19 19:46</span>
+                    <span class="post-stats">↑ 10 | 6 comments</span>
+                    <span class="post-author">u/tomas487</span>
+                    <span class="post-date">2025-10-19 18:17</span>
                 </div>
                 
                 
-                <div class="post-content">I am wondering about the process that worked for you. 
+                <div class="post-content">Hello guys,  
+  
+I just wanted to share my recent experience with integrating a coding agent into my own application.
 
-Did you start with 5 minutes and then added 5 minutes every day? Or did you immediately start with 20 minutes? Or something else entirely?
+In the past, I built an app for genealogy because my wife loves researching our ancestors. Her paper version wasn’t very presentable, and I didn’t really like any of the existing tools out there, so I decided to make my own.
 
-Were you consistent about the specific time of the day from the start?
+Today, I created a simple REST API with an MCP server, which I connected to codex-cli. Then I literally gave it this command:  
 
-I am also wondering where are you now in your journey.</div>
+
+&gt;“You have a blank dat...</div>
                 
                 
                 
@@ -686,26 +1511,14 @@ I am also wondering where are you now in your journey.</div>
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">u/NoRelation2122</span>
-                            <span class="comment-meta">↑ 46 | 2025-10-19 20:23</span>
+                            <span class="comment-author">u/bortlip</span>
+                            <span class="comment-meta">↑ 2 | 2025-10-19 18:34</span>
                         </div>
-                        <div class="comment-body">I started with a hilariously low bar.
+                        <div class="comment-body">One cool thing is that it counts as part of your Plus subscription. You don't need to pay per token as you would using the API.
 
-Literally two minutes right after my morning coffee, figuring if I couldn't manage 120 seconds of sitting still, I had bigger problems than meditation could fix.
+I have GPT 5 coding for me through a custom MCP server and it's great.
 
-The "secret sauce "wasn't adding time consistently (some days I'd do 5 minutes, others 20, depending on how much my brain was doing its anxious hamster-wheel thing), but making it non-negotiable by tying it to something I already did every single day.
-
-Now I'm about 10 years in, sitting for 15-20 minutes most mornings, and the biggest shift isn't that I'm some zen master. It's that I can actually catch myself spiraling into catastrophic thinking and hit pause before I ruin my whole day over something that hasn't even happened yet.</div>
-                        
-                        
-                    </div>
-                    
-                    <div class="comment">
-                        <div class="comment-header">
-                            <span class="comment-author">u/Long-Lost-Lum</span>
-                            <span class="comment-meta">↑ 15 | 2025-10-19 19:55</span>
-                        </div>
-                        <div class="comment-body">For me, I started with guided meditation as that gave me a tangible process to follow and learn from, and I set a goal of 10 minutes per day. Which I stuck to but have completed sessions of 5 minutes or less dependant on the days avalibility. For me, I always aimed to practice once a day, even for less time, as I believe the best way to form a habit is consistency.</div>
+And GPT will help you create the server.</div>
                         
                         
                         <!-- Button to toggle replies for this comment -->
@@ -714,10 +1527,10 @@ Now I'm about 10 years in, sitting for 15-20 minutes most mornings, and the bigg
                             
                             <div class="reply">
                                 <div class="comment-header">
-                                    <span class="reply-author">u/NoRelation2122</span>
-                                    <span class="reply-meta">↑ 3 | 2025-10-19 20:23</span>
+                                    <span class="reply-author">u/IWorkForTheEnemyAMA</span>
+                                    <span class="reply-meta">↑ 1 | 2025-10-19 20:59</span>
                                 </div>
-                                <div class="reply-body">10 minute works amazingly for a start, and I agree with your approach of sometimes doing just 5 because that's what we have time for. Some meditation is always better than no meditation.</div>
+                                <div class="reply-body">Can you shed some more light on what you mean that you can create a custom MCP server and then not needing to pay per token?  Can you use tools like Roo Code?</div>
                             </div>
                             
                         </div>
@@ -726,51 +1539,21 @@ Now I'm about 10 years in, sitting for 15-20 minutes most mornings, and the bigg
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">u/Zimgar</span>
-                            <span class="comment-meta">↑ 7 | 2025-10-19 20:15</span>
+                            <span class="comment-author">u/popiazaza</span>
+                            <span class="comment-meta">↑ 1 | 2025-10-19 19:54</span>
                         </div>
-                        <div class="comment-body">Here is a short summary of my first 5 years meditating. (Think I’m around 7 years total?)
-
-Time of meditation has never been consistent for me, have a family that makes that hard.  
-
-Started 10 mins a day with headspace.  Took a bit to get consistent and comfortable with it.  Started reading books about meditation and some Buddhism.  Was enjoyable but also incredibly confusing.
-
-Consumed all of headspace, occasionally did longer meditation sessions on a weekend or so for 20-30mins.  Did the Waking Up App, switched to that full time.
-
-1-2 years in… Noticed some strange changes.  Could no longer be tickled unless I wanted to?  Could now feel my awareness at different portions of my body.  Body scanning now made sense.
-
-Could feel my brain and other parts relax in ways I couldn’t before.  Started doing walking meditations with my dog.  Started seeing more common visuals or what they call siddhis while meditating.  Started meditating 20mins a day. Drops in overall anxiety, fear, and anger.
-
-Started to meditate more without my
-noise cancelling earbuds.
-
-Year 3? Life stuff happened, motivation to meditate went down and when I tried it was hard.  Very antsy, couldn’t get comfortable, complained about posture etc.  was less consistent even when going down to 10 minutes.
-
-Year 4, more consistent again, more books during off-time.  Back to 20 minutes daily, occasionally long sessions of 1-2 hours(every couple of months.  
-
-Year 5.  Still meditating consistently but now meditate while doing hot yoga as well.  Started meditating with Kasina in addition to normal breath meditation.  Also progress more into insight meditation while breath meditation.  Several changes in what and how I notice the breath.  Glimpses of jhanas 3-4.
-More drops in fear, anxiety and anger.
-
-Start looking into meditation retreats.  Lots of different books read, all that make me feel more at ease and more as though I’m on the right path.
-
-Anyways hope this is helpful?</div>
+                        <div class="comment-body">It could be amazing, but most of the time it doesn't really needs to be a custom MCP.</div>
                         
                         
-                        <!-- Button to toggle replies for this comment -->
-                        <button class="toggle-button toggle-replies">Show Replies</button>
-                        <div class="replies collapsed">
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/bellonium</span>
-                                    <span class="reply-meta">↑ 1 | 2025-10-19 23:35</span>
-                                </div>
-                                <div class="reply-body">Wow, this is near my same story but over the last 10yrs and I started with the 10% happier app.  
-
-Thank you for sharing</div>
-                            </div>
-                            
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">u/YaOldPalWilbur</span>
+                            <span class="comment-meta">↑ 1 | 2025-10-19 18:36</span>
                         </div>
+                        <div class="comment-body">Good to know. I’ve been researching MCPs.</div>
+                        
                         
                     </div>
                     
@@ -782,7 +1565,7 @@ Thank you for sharing</div>
                 <div class="subreddit-name">r/cars</div>
                 <div class="post-title"><a href="https://www.reddit.com/r/cars/comments/1oarp9i/bmw_says_its_neue_klasse_ev_is_in_such_high/" target="_blank">BMW Says Its Neue Klasse EV Is In Such High Demand, Even They Weren’t Ready For It</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 281 | 111 comments</span>
+                    <span class="post-stats">↑ 282 | 111 comments</span>
                     <span class="post-author">u/BenzinaPorkChop</span>
                     <span class="post-date">2025-10-19 14:56</span>
                 </div>
@@ -800,7 +1583,7 @@ Thank you for sharing</div>
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/Dazzling-Rooster2103</span>
-                            <span class="comment-meta">↑ 182 | 2025-10-19 15:00</span>
+                            <span class="comment-meta">↑ 178 | 2025-10-19 15:00</span>
                         </div>
                         <div class="comment-body">I think it looks really cool, excited to see the full production sedans/coupes.
 
@@ -814,7 +1597,7 @@ Especially with them keeping the B58 for the upcoming M350i, and possibly the S5
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/TheReaperSovereign</span>
-                                    <span class="reply-meta">↑ 56 | 2025-10-19 16:15</span>
+                                    <span class="reply-meta">↑ 57 | 2025-10-19 16:15</span>
                                 </div>
                                 <div class="reply-body">Another tuner unlocked the bmw dme a couple weeks ago. The b58 is going to support an entire generation of aftermarket car dudes with its continued production</div>
                             </div>
@@ -842,7 +1625,7 @@ Especially with them keeping the B58 for the upcoming M350i, and possibly the S5
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/nothrowaway4me</span>
-                            <span class="comment-meta">↑ 105 | 2025-10-19 15:00</span>
+                            <span class="comment-meta">↑ 104 | 2025-10-19 15:00</span>
                         </div>
                         <div class="comment-body">I'm generally a hater of modern cars, but I can't deny BMW is still making great products and If I were in the market for new premium cars it'd easily be a BMW over Audi &amp; Mercedes. 
 
@@ -856,7 +1639,7 @@ Also I just checked the configurator, my one issue with this car is the stupid s
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/ProtoplanetaryNebula</span>
-                                    <span class="reply-meta">↑ 17 | 2025-10-19 15:04</span>
+                                    <span class="reply-meta">↑ 15 | 2025-10-19 15:04</span>
                                 </div>
                                 <div class="reply-body">I had a three series and loved it, but it constantly had the check engine light on. An electric three series would be a welcome change.</div>
                             </div>
@@ -864,7 +1647,7 @@ Also I just checked the configurator, my one issue with this car is the stupid s
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/NorCalAthlete</span>
-                                    <span class="reply-meta">↑ 4 | 2025-10-19 16:44</span>
+                                    <span class="reply-meta">↑ 2 | 2025-10-19 16:44</span>
                                 </div>
                                 <div class="reply-body">There are actually a few different aftermarket steering wheel companies I’ve seen now that look pretty solid. Several guys in the group chat I’m in have purchased and installed them and are happy with them. They’re the shape of the LCI M wheel but with color matched leather to your interior. Carismo is one, I forget the others, but they’re pretty similar. 
 
@@ -888,7 +1671,7 @@ https://www.instagram.com/carismo_design</div>
                     <div class="comment">
                         <div class="comment-header">
                             <span class="comment-author">u/JGRACEFAN95</span>
-                            <span class="comment-meta">↑ 75 | 2025-10-19 15:03</span>
+                            <span class="comment-meta">↑ 77 | 2025-10-19 15:03</span>
                         </div>
                         <div class="comment-body">I’m in the minority but I think the Neue Klasse design language is really handsome and is head and shoulders above what Audi and Mercedes are trying to do with just evolutions of their previous cars.</div>
                         
@@ -900,7 +1683,7 @@ https://www.instagram.com/carismo_design</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/Jerraskoe</span>
-                                    <span class="reply-meta">↑ 31 | 2025-10-19 16:00</span>
+                                    <span class="reply-meta">↑ 30 | 2025-10-19 16:00</span>
                                 </div>
                                 <div class="reply-body">You're probably not in the minority if these models are actually in high demand that BMW wasn't ready for it</div>
                             </div>
@@ -908,7 +1691,7 @@ https://www.instagram.com/carismo_design</div>
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/Montague-Withnail</span>
-                                    <span class="reply-meta">↑ 11 | 2025-10-19 15:39</span>
+                                    <span class="reply-meta">↑ 13 | 2025-10-19 15:39</span>
                                 </div>
                                 <div class="reply-body">I saw a new iX3 in person a couple of weeks ago and had a quick sit in it and honestly I think it looks even better in person. The interior felt better quality than some other recent BMWs too (like the current 5 Series) although I don't like the capacitive touch buttons on the steering wheel.
 
@@ -918,7 +1701,7 @@ Really looking forward to seeing what the Neue Klasse 3 Series looks like as I t
                             <div class="reply">
                                 <div class="comment-header">
                                     <span class="reply-author">u/jaehaerys48</span>
-                                    <span class="reply-meta">↑ 6 | 2025-10-19 15:42</span>
+                                    <span class="reply-meta">↑ 4 | 2025-10-19 15:42</span>
                                 </div>
                                 <div class="reply-body">It's grown on me. I wouldn't say that it's my favourite design, but I prefer it over the preceding BMWs.</div>
                             </div>
@@ -932,20 +1715,18 @@ Really looking forward to seeing what the Neue Klasse 3 Series looks like as I t
             </div>
             
             <div class="post">
-                <div class="subreddit-name">r/joerogan</div>
-                <div class="post-title"><a href="https://www.reddit.com/r/JoeRogan/comments/1oaq2s6/the_denial_is_hitting_hard/" target="_blank">The denial is hitting hard.</a></div>
+                <div class="subreddit-name">r/chatgptcoding</div>
+                <div class="post-title"><a href="https://www.reddit.com/r/ChatGPTCoding/comments/1oaj7ve/autocomplete/" target="_blank">Autocomplete</a></div>
                 <div class="post-meta">
-                    <span class="post-stats">↑ 1318 | 749 comments</span>
-                    <span class="post-author">u/KingLouis2016</span>
-                    <span class="post-date">2025-10-19 13:47</span>
+                    <span class="post-stats">↑ 5 | 2 comments</span>
+                    <span class="post-author">u/No-Neighborhood-7229</span>
+                    <span class="post-date">2025-10-19 07:11</span>
                 </div>
                 
                 
+                <div class="post-content">What are the best alternatives to Cursor Autocomplete that can be installed in VS Code as a plugin? Preferably free, or ones that allow using my own API key (no subscription required).</div>
                 
                 
-                <div class="media-container">
-                    <img src="https://i.redd.it/e4mvxkcxezvf1.jpeg" alt="Post image" loading="lazy">
-                </div>
                 
                 
                 
@@ -956,134 +1737,25 @@ Really looking forward to seeing what the Neue Klasse 3 Series looks like as I t
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">u/I_Dont_Work_Here_Lad</span>
-                            <span class="comment-meta">↑ 223 | 2025-10-19 14:31</span>
+                            <span class="comment-author">u/mr-claesson</span>
+                            <span class="comment-meta">↑ 3 | 2025-10-19 07:57</span>
                         </div>
-                        <div class="comment-body">As if anyone needs to be paid to hate Trump 🤦🏻‍♂️
-
-He has led a life of being a piece of shit. You don’t need to pay anyone to hate that fat sack of shit.</div>
+                        <div class="comment-body">Co-pilot and Continue.dev comes to mind.</div>
                         
-                        
-                        <!-- Button to toggle replies for this comment -->
-                        <button class="toggle-button toggle-replies">Show Replies</button>
-                        <div class="replies collapsed">
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/Chippopotanuse</span>
-                                    <span class="reply-meta">↑ 51 | 2025-10-19 16:40</span>
-                                </div>
-                                <div class="reply-body">What makes me really sad is that you also don’t need to pay 70 million people to ABSOLUTELY LOVE AND WORSHIP that sack of shit. 
-
-Far too much of our country is mentally insane and dumb.</div>
-                            </div>
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/Sandgrease</span>
-                                    <span class="reply-meta">↑ 11 | 2025-10-19 21:49</span>
-                                </div>
-                                <div class="reply-body">I hated him 30 years ago, I feel like I deserve a check at this point.</div>
-                            </div>
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/Uriel_The_Destroyer</span>
-                                    <span class="reply-meta">↑ 4 | 2025-10-19 15:54</span>
-                                </div>
-                                <div class="reply-body">Well said.</div>
-                            </div>
-                            
-                        </div>
                         
                     </div>
                     
                     <div class="comment">
                         <div class="comment-header">
-                            <span class="comment-author">u/The_Librarian_841</span>
-                            <span class="comment-meta">↑ 223 | 2025-10-19 14:15</span>
+                            <span class="comment-author">u/popiazaza</span>
+                            <span class="comment-meta">↑ 4 | 2025-10-19 08:47</span>
                         </div>
-                        <div class="comment-body">Musk literally paid people to vote for Trump. The Soros meme died that day. MAGA is and has always been the deep state.</div>
-                        
-                        
-                        <!-- Button to toggle replies for this comment -->
-                        <button class="toggle-button toggle-replies">Show Replies</button>
-                        <div class="replies collapsed">
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/mcfeeli</span>
-                                    <span class="reply-meta">↑ 50 | 2025-10-19 15:25</span>
-                                </div>
-                                <div class="reply-body">When ever Trump and the right accuses the left of something 100% they are guilty of doing it.</div>
-                            </div>
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/stackered</span>
-                                    <span class="reply-meta">↑ 36 | 2025-10-19 14:56</span>
-                                </div>
-                                <div class="reply-body">they stole the election too, with vote switching/adding in votes during the counting process via Starlink.  Elon/Elon's son AND Trump slipped up and admitted it live on TV a few times.  Now, they've bought Dominion voting systems.  
+                        <div class="comment-body">[Windsurf has a free VS Code extension](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium), and it's pretty close to Cursor one.
 
-Basically, without cheating/stealing or Russian interference the GOP hasn't won a real election in the presidency since the 1980's outside of Bush Jr.'s 2nd term (he stole the first with Jeb recount). 
+Best BYOK is Continue.dev, but it's not that amazing since there's not many option for API based auto complete model. Only consider it if you want to use a local model imo.
 
-Its actually insane how much the GOP is the deep state, hence why they use the term so much (always projection).</div>
-                            </div>
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/Rhythm_Flunky</span>
-                                    <span class="reply-meta">↑ 4 | 2025-10-19 15:58</span>
-                                </div>
-                                <div class="reply-body">Christian Nationalist have always been the greatest threat to our Republic. Anybody claiming anything else is a degenerate and a traitor.</div>
-                            </div>
-                            
-                        </div>
+Copilot has 2k free auto complete, you can pay 10$ to unlock unlimited auto complete (you will also get agent requests).</div>
                         
-                    </div>
-                    
-                    <div class="comment">
-                        <div class="comment-header">
-                            <span class="comment-author">u/NdamukongSuhDude</span>
-                            <span class="comment-meta">↑ 108 | 2025-10-19 14:19</span>
-                        </div>
-                        <div class="comment-body">Republicans are in such denial. They really believe Soros is signing a check to individual protesters? These people are complete idiots.</div>
-                        
-                        
-                        <!-- Button to toggle replies for this comment -->
-                        <button class="toggle-button toggle-replies">Show Replies</button>
-                        <div class="replies collapsed">
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/jpk195</span>
-                                    <span class="reply-meta">↑ 51 | 2025-10-19 14:25</span>
-                                </div>
-                                <div class="reply-body">They aren't idiots.
-
-They just conveniently lose the ability to smell bullshit anytime it's their team's bullshit.</div>
-                            </div>
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/bionicjoe</span>
-                                    <span class="reply-meta">↑ 7 | 2025-10-19 17:12</span>
-                                </div>
-                                <div class="reply-body">I went to a protest years ago in my small town of 6000 people in Kentucky. 
-
-Some old dude came up to me and asked if I was paid by Soros.   
-People believe anything that comes out of the idiot rectangles.</div>
-                            </div>
-                            
-                            <div class="reply">
-                                <div class="comment-header">
-                                    <span class="reply-author">u/Embarrassed-Top6449</span>
-                                    <span class="reply-meta">↑ 3 | 2025-10-19 15:46</span>
-                                </div>
-                                <div class="reply-body">No one thinks that he signs checks to individual protesters. He funds groups that organize and yes often pay for protests.</div>
-                            </div>
-                            
-                        </div>
                         
                     </div>
                     
